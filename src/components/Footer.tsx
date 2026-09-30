@@ -4,11 +4,13 @@ import SocialIcon from "./SocialIcon";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "What We Do", href: "/services" },
+  { label: "Products", href: "/products" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Print Concierge", href: "/print-concierge" },
+  { label: "Why Printoviya", href: "/about#why-printoviya" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/start-a-project" },
+  { label: "Portfolio", href: "/portfolio" },
 ];
 
 const SERVICE_LINKS = [
@@ -17,7 +19,8 @@ const SERVICE_LINKS = [
   { label: "Merchandise Printing", href: "/services#merchandise" },
   { label: "Print Solutions", href: "/services#print-solutions" },
   { label: "Social Media Design", href: "/services#social-media-design" },
-  { label: "Dedicated Designer", href: "/services#dedicated-designer" },
+  { label: "Dedicated Design Support", href: "/services#dedicated-designer" },
+  { label: "Consultation", href: "/print-concierge" },
 ];
 
 export default function Footer() {
@@ -100,6 +103,13 @@ export default function Footer() {
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-blue hover:text-blue"
               >
                 <SocialIcon name="youtube" className="h-4 w-4" />
+              </a>
+              <a
+                href="#"
+                aria-label="Pinterest"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-blue hover:text-blue"
+              >
+                <SocialIcon name="pinterest" className="h-4 w-4" />
               </a>
             </div>
           </div>

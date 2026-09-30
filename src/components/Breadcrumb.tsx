@@ -3,18 +3,27 @@ import { ChevronRight } from "lucide-react";
 
 type Crumb = { label: string; href?: string };
 
-export default function Breadcrumb({ items }: { items: Crumb[] }) {
+type Props = {
+  items: Crumb[];
+  light?: boolean;
+};
+
+export default function Breadcrumb({ items, light = true }: Props) {
+  const mutedClass = light ? "text-white/60" : "text-slate";
+  const activeClass = light ? "text-white" : "text-navy";
+  const hoverClass = light ? "hover:text-white" : "hover:text-navy";
+
   return (
-    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-white/60">
+    <nav aria-label="Breadcrumb" className={`flex items-center gap-2 text-xs ${mutedClass}`}>
       {items.map((item, i) => (
         <span key={item.label} className="flex items-center gap-2">
           {i > 0 && <ChevronRight className="h-3 w-3" aria-hidden="true" />}
           {item.href ? (
-            <Link href={item.href} className="hover:text-white">
+            <Link href={item.href} className={hoverClass}>
               {item.label}
             </Link>
           ) : (
-            <span className="text-white">{item.label}</span>
+            <span className={activeClass}>{item.label}</span>
           )}
         </span>
       ))}
