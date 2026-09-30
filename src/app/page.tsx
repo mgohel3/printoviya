@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Globe2,
@@ -56,26 +57,48 @@ const TESTIMONIALS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-off-white">
-        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
-          <div>
+      {/* Hero — full banner image */}
+      <section className="relative isolate overflow-hidden">
+        {/* Desktop / tablet banner */}
+        <Image
+          src="/hero/home-hero-desktop.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover sm:block"
+        />
+        {/* Mobile banner (swap for a differently-cropped image so the subject isn't lost) */}
+        <Image
+          src="/hero/home-hero-mobile.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover sm:hidden"
+        />
+        <div className="absolute inset-0 bg-navy/55" aria-hidden="true" />
+
+        <div className="container-px relative mx-auto flex min-h-[560px] max-w-[1440px] flex-col justify-center py-20 sm:min-h-[640px] lg:min-h-[680px]">
+          <div className="max-w-2xl">
             <p className="mb-4 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
               Ideas to life. Without the headache.
             </p>
-            <h1 className="font-heading text-4xl font-extrabold leading-[1.1] text-navy sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="font-heading text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-[3.4rem]">
               Design. Coordinate. Print.
               <br />
               <span className="text-blue">We&apos;ve Got You.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80">
               From design and print-ready artwork to printer coordination and production
               support, Printoviya helps you move from requirement to final product without
               the usual printing headache.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <PrimaryButton href="/start-a-project">Tell Us What You Need</PrimaryButton>
-              <SecondaryButton href="/how-it-works" icon>
+              <PrimaryButton href="/start-a-project" variant="light">
+                Tell Us What You Need
+              </PrimaryButton>
+              <SecondaryButton href="/how-it-works" icon variant="outline-light">
                 See How It Works
               </SecondaryButton>
             </div>
@@ -83,36 +106,9 @@ export default function HomePage() {
               {TRUST_ITEMS.map((item) => (
                 <div key={item.label} className="flex items-center gap-2">
                   <item.icon className="h-5 w-5 shrink-0 text-blue" aria-hidden="true" />
-                  <span className="text-xs font-medium text-navy">{item.label}</span>
+                  <span className="text-xs font-medium text-white">{item.label}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-navy-800 p-10 shadow-2xl shadow-navy/20">
-              <div
-                className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full border-[28px] border-blue/20"
-                aria-hidden="true"
-              />
-              <div className="relative grid grid-cols-2 gap-4">
-                <div className="col-span-2 rounded-2xl bg-white/10 p-6 backdrop-blur">
-                  <p className="font-heading text-lg font-semibold text-white">printoviya</p>
-                  <p className="mt-1 text-xs text-white/60">More than Printing.</p>
-                </div>
-                <div className="rounded-2xl bg-white p-5">
-                  <PackageCheck className="h-6 w-6 text-blue" />
-                  <p className="mt-3 text-xs font-medium text-navy">Packaging</p>
-                </div>
-                <div className="rounded-2xl bg-white p-5">
-                  <Printer className="h-6 w-6 text-blue" />
-                  <p className="mt-3 text-xs font-medium text-navy">Print Solutions</p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-border bg-white px-5 py-4 shadow-xl sm:block">
-              <p className="font-heading text-sm font-semibold text-navy">Any Product.</p>
-              <p className="text-xs text-slate">Any Printer. Anywhere.</p>
             </div>
           </div>
         </div>

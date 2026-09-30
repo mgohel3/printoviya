@@ -175,6 +175,34 @@ real photos, highest impact first:
    these should be replaced with **real project images**, not stock).
 4. Product listing/detail thumbnails.
 
+### Home hero banner
+
+The Home hero (`src/app/page.tsx`) is now a full-bleed banner image with
+a navy overlay (`bg-navy/55`) and white text on top, rather than a
+two-column text/graphic split. Two image slots, both currently filled
+with generated placeholder gradients — replace with real files at the
+same paths:
+
+| File | Shown on | Spec |
+| --- | --- | --- |
+| `public/hero/home-hero-desktop.jpg` | `sm:` and up (≥640px) | **2400 × 1000px**, landscape, ~2.4:1 ratio |
+| `public/hero/home-hero-mobile.jpg` | below `sm:` (<640px) | **1080 × 1350px**, portrait, 4:5 ratio |
+
+Brief for the designer/photo source:
+- Deliver both as JPG or WebP, sRGB, optimized to roughly 200–500KB each
+  (they're rendered with `next/image`, but starting large defeats that).
+- A ~55% navy (`#0B1F3B`) scrim sits over the whole image for text
+  legibility, and the H1/body copy/buttons are left-aligned starting
+  ~80px from the left edge (desktop) — keep the focal subject centered
+  or right-of-center so it isn't hidden under the text block or the
+  overlay's darkest area.
+- The mobile crop is a **separate** image, not just a scaled-down
+  desktop banner — compose it so the subject reads in a tall 4:5 frame
+  without the text overlapping it.
+- Both `<Image>` calls use `fill` + `object-cover`, so any image supplied
+  at a different aspect ratio will be center-cropped to fit — matching
+  the exact ratios above avoids unexpected cropping.
+
 ---
 
 ## 9. Layout & Responsive Rules
