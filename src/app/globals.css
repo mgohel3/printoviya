@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --color-navy: #0b1f3b;
+  --color-navy-800: #142a4d;
+  --color-blue: #2d8cff;
+  --color-blue-dark: #1c6fe0;
+  --color-light-blue: #eaf4ff;
+  --color-white: #ffffff;
+  --color-off-white: #f8fafc;
+  --color-dark-text: #111827;
+  --color-slate: #5b6472;
+  --color-border: #e2e8f0;
+}
+
+@theme inline {
+  --color-navy: var(--color-navy);
+  --color-navy-800: var(--color-navy-800);
+  --color-blue: var(--color-blue);
+  --color-blue-dark: var(--color-blue-dark);
+  --color-light-blue: var(--color-light-blue);
+  --color-off-white: var(--color-off-white);
+  --color-dark-text: var(--color-dark-text);
+  --color-slate: var(--color-slate);
+  --color-border: var(--color-border);
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-inter);
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-dark-text);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+
+.container-px {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-px {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-px {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
