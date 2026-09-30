@@ -115,9 +115,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
           <p>© {new Date().getFullYear()} Printoviya. All rights reserved.</p>
           <p>Design · Support · Print · Deliver · Beyond.</p>
+          <p>
+            Developed &amp; maintained by{" "}
+            <span className="font-medium text-white/70">Evolnity</span>
+          </p>
         </div>
       </div>
     </footer>
