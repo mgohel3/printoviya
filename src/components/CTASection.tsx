@@ -36,7 +36,9 @@ export default function CTASection({
         </h2>
         {description && <p className="mx-auto mt-4 max-w-xl text-white/75">{description}</p>}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <PrimaryButton href={primaryHref}>{primaryLabel}</PrimaryButton>
+          <PrimaryButton href={primaryHref} variant="light">
+            {primaryLabel}
+          </PrimaryButton>
           {secondaryLabel && secondaryHref && (
             <SecondaryButton href={secondaryHref} variant="outline-light">
               {secondaryLabel}

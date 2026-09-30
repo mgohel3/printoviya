@@ -67,17 +67,17 @@ export default function Footer() {
             <p className="mt-4 text-sm text-white/60">
               Tips, updates and inspiration — straight to your inbox.
             </p>
-            <form className="mt-4 flex items-center overflow-hidden rounded-xl border border-white/15 bg-white/5">
+            <form className="mt-4 flex items-center overflow-hidden rounded-full border border-white/15 bg-white/5">
               <input
                 type="email"
                 placeholder="Your email address"
                 aria-label="Email address"
-                className="w-full bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none"
+                className="w-full bg-transparent py-3 pl-5 pr-2 text-sm text-white placeholder:text-white/40 focus:outline-none"
               />
               <button
                 type="submit"
                 aria-label="Subscribe"
-                className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue text-white transition-colors hover:bg-blue-dark"
+                className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue text-white transition-colors hover:bg-blue-dark"
               >
                 →
               </button>

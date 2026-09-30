@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import CTASection from "@/components/CTASection";
+import PlaceholderPhoto from "@/components/PlaceholderPhoto";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -151,9 +152,7 @@ export default function PortfolioPage() {
                     key={item}
                     className="overflow-hidden rounded-2xl border border-border bg-white"
                   >
-                    <div className="flex aspect-square items-center justify-center bg-light-blue text-blue">
-                      <row.icon className="h-8 w-8" aria-hidden="true" />
-                    </div>
+                    <PlaceholderPhoto icon={row.icon} className="aspect-square w-full" />
                     <p className="p-4 text-xs font-semibold text-navy">{item}</p>
                   </div>
                 ))}

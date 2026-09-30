@@ -173,7 +173,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="inline-flex w-full items-center justify-center rounded-xl bg-blue px-6 py-4 font-heading text-sm font-semibold text-white transition-colors hover:bg-blue-dark sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-full bg-navy px-6 py-4 font-heading text-sm font-semibold text-white transition-colors hover:bg-blue sm:w-auto"
       >
         Submit Your Requirement
       </button>

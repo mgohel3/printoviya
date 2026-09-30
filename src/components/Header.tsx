@@ -45,7 +45,7 @@ export default function Header() {
         <div className="hidden xl:block">
           <Link
             href="/start-a-project"
-            className="inline-flex items-center justify-center rounded-xl bg-navy px-5 py-2.5 font-heading text-sm font-semibold text-white transition-colors hover:bg-blue"
+            className="inline-flex items-center justify-center rounded-full bg-navy px-5 py-2.5 font-heading text-sm font-semibold text-white transition-colors hover:bg-blue"
           >
             Tell Us What You Need
           </Link>
@@ -77,7 +77,7 @@ export default function Header() {
             ))}
             <Link
               href="/start-a-project"
-              className="mt-2 inline-flex items-center justify-center rounded-xl bg-navy px-5 py-3 font-heading text-sm font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-navy px-5 py-3 font-heading text-sm font-semibold text-white"
               onClick={() => setOpen(false)}
             >
               Tell Us What You Need

@@ -9,10 +9,9 @@ type Props = {
 };
 
 /**
- * Local, offline stand-in for real photography. Used anywhere the design
- * reference shows a product/lifestyle photo but no real asset exists yet —
- * keeps the layout honest (clearly a placeholder) while matching the
- * reference's image-driven composition.
+ * Local, offline stand-in for real photography — a layered gradient +
+ * icon composition rather than a flat "no image" box. Used anywhere the
+ * design reference shows a photo but no licensed asset exists yet.
  */
 export default function PlaceholderPhoto({
   icon: Icon = ImageIcon,
@@ -20,19 +19,51 @@ export default function PlaceholderPhoto({
   className = "",
   tone = "light",
 }: Props) {
-  const bg = tone === "navy" ? "bg-navy-800" : "bg-light-blue";
-  const iconColor = tone === "navy" ? "text-blue" : "text-blue";
-  const labelColor = tone === "navy" ? "text-white/70" : "text-navy/70";
+  const isNavy = tone === "navy";
 
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-2 ${bg} ${className}`}
+      className={`relative flex flex-col items-center justify-center gap-3 overflow-hidden ${
+        isNavy ? "bg-navy" : "bg-gradient-to-br from-light-blue via-white to-light-blue"
+      } ${className}`}
       role="img"
       aria-label={label ?? "Placeholder image"}
     >
-      <Icon className={`h-8 w-8 ${iconColor}`} aria-hidden="true" />
+      <div
+        className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-2xl ${
+          isNavy ? "bg-blue/25" : "bg-blue/20"
+        }`}
+        aria-hidden="true"
+      />
+      <div
+        className={`pointer-events-none absolute -bottom-12 -left-8 h-36 w-36 rounded-full blur-2xl ${
+          isNavy ? "bg-white/10" : "bg-navy/10"
+        }`}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `radial-gradient(${isNavy ? "#fff" : "#0B1F3B"} 1px, transparent 1px)`,
+          backgroundSize: "16px 16px",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg ${
+          isNavy ? "bg-white/10 backdrop-blur" : "bg-white"
+        }`}
+      >
+        <Icon className="h-7 w-7 text-blue" aria-hidden="true" />
+      </div>
       {label && (
-        <span className={`px-4 text-center text-xs font-medium ${labelColor}`}>{label}</span>
+        <span
+          className={`relative z-10 px-4 text-center text-xs font-medium ${
+            isNavy ? "text-white/75" : "text-navy/70"
+          }`}
+        >
+          {label}
+        </span>
       )}
     </div>
   );

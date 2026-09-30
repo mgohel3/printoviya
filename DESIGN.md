@@ -1,0 +1,257 @@
+# Printoviya — Design System
+
+This document describes the visual language, component library and content
+architecture behind the Printoviya website, so future work (new pages,
+real photography, a CMS integration) stays consistent with what's here.
+
+---
+
+## 1. Brand Principle
+
+Printoviya is a **partner that helps customers get a print requirement
+done** — not just a company that sells printing. Design, print-ready file
+prep, printer coordination and managed designers are all part of one
+promise:
+
+> You tell us what you need. We help make it happen.
+
+Every page should reinforce that a customer does **not** have to print
+with Printoviya to get help — this shows up as recurring copy ("You don't
+have to print with us", "Already have a printer? No problem") and as a
+dedicated Print Concierge page.
+
+---
+
+## 2. Color System
+
+Defined as CSS custom properties in `src/app/globals.css` and exposed to
+Tailwind via `@theme inline`, so they're usable as `bg-navy`, `text-blue`,
+etc.
+
+| Token | Value | Usage |
+| --- | --- | --- |
+| `--color-navy` | `#0B1F3B` | Primary dark — headers on dark sections, primary button fill, footer background |
+| `--color-navy-800` | `#142A4D` | Secondary dark, gradient companion to navy |
+| `--color-blue` | `#2D8CFF` | Accent — links, icons, highlighted words, hover states |
+| `--color-blue-dark` | `#1C6FE0` | Hover state for blue elements |
+| `--color-light-blue` | `#EAF4FF` | Section backgrounds, icon chips, soft highlight cards |
+| `--color-off-white` | `#F8FAFC` | Alternate section background (instead of pure white, for rhythm) |
+| `--color-white` | `#FFFFFF` | Base background, cards |
+| `--color-dark-text` | `#111827` | Body text fallback (most text uses `navy` or `slate` instead) |
+| `--color-slate` | `#5B6472` | Secondary/body copy on light backgrounds |
+| `--color-border` | `#E2E8F0` | Card borders, dividers |
+
+**Rules:**
+- Never use burgundy, rainbow palettes, or CMYK clichés.
+- Sections alternate between `white` / `off-white` / `light-blue` / `navy` —
+  never more than one light variant in a row, and navy is used sparingly
+  (hero-adjacent CTA bands, footer, breadcrumb bars).
+- The blue accent is used for: links, one highlighted word per heading
+  (`<span className="text-blue">…</span>`), icons inside chips, and active
+  nav/filter states. It is not used as a large fill except on buttons.
+
+---
+
+## 3. Typography
+
+Loaded via `next/font/google` in `src/app/layout.tsx`.
+
+| Role | Font | Weights |
+| --- | --- | --- |
+| Headings, brand wordmark fallback | **Poppins** | 600, 700, 800 |
+| Body / UI copy | **Inter** | 400, 500, 600 |
+
+- `h1`–`h6` default to Poppins globally (see `globals.css`).
+- Buttons use Poppins 600 (`font-heading font-semibold`).
+- Eyebrow labels: `text-xs font-heading font-semibold uppercase
+  tracking-[0.18em] text-blue`.
+- Hero H1: `text-4xl sm:text-5xl font-extrabold` (Poppins 800).
+- Section H2: `text-3xl sm:text-4xl font-bold`.
+
+---
+
+## 4. Logo
+
+The real logo asset lives in `public/brand/`:
+- `printoviya-logo.png` — full lockup with the "Your Printing Journey. A
+  to Z. We're With You." tagline.
+- `printoviya-wordmark.png` — wordmark only, cropped tight (used in the
+  header and most placements).
+
+Both are background-removed (transparent PNG). The `Logo` component
+(`src/components/Logo.tsx`) renders these via `next/image`:
+- `variant="dark"` (default): rendered directly — for white/off-white/
+  light-blue backgrounds. The wordmark's navy letterforms need a light
+  surface to read.
+- `variant="light"`: wraps the same asset in a small white rounded chip —
+  used on navy backgrounds (footer). Do **not** attempt to recolor the
+  mark to white; its navy lettering and blue O-gradient aren't separable
+  by simple filters.
+
+Do not reintroduce the earlier hand-built SVG wordmark unless the real
+asset is unavailable.
+
+---
+
+## 5. The "O" Motif
+
+The O in `printoviya` is the brand's hero element — a continuous loop with
+a forward-facing arrow, representing the end-to-end journey from
+requirement to finished product. It appears:
+- In the logo itself (baked into the asset).
+- As the `OJourney` component (`src/components/OJourney.tsx`) — the
+  6-step "A to Z" process strip reused on Home, Print Concierge and How
+  It Works.
+- As a subtle circular "how we support" diagram on the Services page.
+
+Keep it subtle elsewhere — it should not become a background pattern on
+every section.
+
+---
+
+## 6. Buttons
+
+Two shared components, both **fully rounded (pill-shaped, `rounded-full`)**
+per the latest brand direction — not the softer `rounded-xl` used
+earlier in the project.
+
+### `PrimaryButton` (`src/components/PrimaryButton.tsx`)
+- `variant="dark"` (default): navy fill, white text — used on white/
+  off-white/light-blue backgrounds. Hover → `bg-blue`.
+- `variant="light"`: white fill, navy text — used inside navy sections
+  (e.g. `CTASection`). Hover → `bg-light-blue`.
+- Trailing arrow icon by default (`icon={false}` to omit).
+
+### `SecondaryButton` (`src/components/SecondaryButton.tsx`)
+- `variant="outline"` (default): white fill, border, navy text — for
+  light backgrounds.
+- `variant="outline-light"`: transparent, white border/text — for navy
+  backgrounds.
+- Optional `icon` renders a small filled circular play-badge to the left
+  (navy badge on light variant, translucent white badge on dark variant),
+  matching the "See How It Works" pattern.
+
+**Other pill-shaped controls**, for consistency:
+- Header / mobile nav CTA ("Tell Us What You Need").
+- `ContactForm` submit button.
+- Footer newsletter input + circular submit button.
+- Portfolio/Products filter chips.
+
+Icon-only chips (service icons, badges) stay `rounded-xl`/`rounded-2xl` —
+the pill treatment is for **actionable buttons and pills**, not every
+rounded box.
+
+---
+
+## 7. Cards & Surfaces
+
+- Cards: white background, `border border-border`, `rounded-2xl`
+  (16–24px), soft shadow only on hover (`hover:shadow-lg`).
+- Icon chips inside cards: `rounded-xl bg-light-blue`, icon in `text-blue`.
+- Section spacing: `py-20` standard, `py-16` for tighter bands (e.g. the
+  breadcrumb bar on Products/case-study pages).
+
+---
+
+## 8. Imagery
+
+No licensed photography is available yet for this build (an attempt to
+source generic CC0 stock photography was blocked by rate-limiting on the
+one available source — see `PlaceholderPhoto`'s doc comment). Until real
+product photography is supplied:
+
+`PlaceholderPhoto` (`src/components/PlaceholderPhoto.tsx`) is the
+standard stand-in — a layered gradient + dot-grid + icon composition
+(not a flat "no image" box), in `light` (default) or `navy` tone. It
+takes any `lucide-react` icon and an optional caption.
+
+**To swap in real photography later:** replace `PlaceholderPhoto` usages
+with `next/image` calls pointing at real assets, keeping the same
+`aspect-*` wrapper classes so layouts don't shift. Priority order for
+real photos, highest impact first:
+1. Home hero product scene.
+2. Print Concierge / How It Works hero portraits.
+3. Portfolio category tiles (once real project photography exists —
+   these should be replaced with **real project images**, not stock).
+4. Product listing/detail thumbnails.
+
+---
+
+## 9. Layout & Responsive Rules
+
+- Content max-width: `max-w-[1440px]`, horizontal padding via the
+  `.container-px` utility (24px mobile → 40px tablet → 80px desktop, see
+  `globals.css`).
+- Breakpoints follow Tailwind defaults: `sm` 640px, `md` 768px, `lg`
+  1024px, `xl` 1280px. The header's nav switches to the mobile menu below
+  `xl` (1280px) because the full nav + CTA needs the extra width.
+- Grids collapse: `grid-cols-1` → `sm:grid-cols-2` → `lg:grid-cols-3/4`
+  as columns allow; process/journey strips go `grid-cols-2` on mobile →
+  `sm:grid-cols-3` → `lg:grid-cols-6`.
+- Never scale the desktop layout down uniformly — sections reflow
+  (stacked columns, adjusted grid counts) rather than shrinking.
+
+---
+
+## 10. Content / Data Architecture
+
+Page content that repeats or could later come from a CMS lives in
+`src/data/*.ts` as typed arrays/objects, not hardcoded in page markup:
+
+| File | Powers |
+| --- | --- |
+| `services.ts` | Services page cards, Home "More Than Printing" grid, footer service links |
+| `products.ts` | Products listing/detail, Home featured products, related-products |
+| `portfolio.ts` | Portfolio case-study template. **Intentionally empty of real projects** — see rule below |
+| `faq.ts` | FAQ page (grouped by category) |
+| `journey.ts` | The 6-step A-to-Z `OJourney` steps |
+
+**Portfolio rule:** never add a fabricated client, testimonial, result or
+case study to `portfolio.ts`. The one seeded entry
+(`isTemplatePreview: true`, slug `template-preview`) exists solely to
+preview the case-study page layout and is clearly labeled as such (banner
++ "Sample Client (Template)") — remove it once real, approved projects
+are added, and add real projects as plain `PortfolioProject` objects with
+`isTemplatePreview` omitted.
+
+---
+
+## 11. Component Reference
+
+| Component | Purpose |
+| --- | --- |
+| `Header` / `Footer` | Global chrome, nav: Home / What We Do / Products / How It Works / Why Printoviya / About / Contact |
+| `Logo` | Renders the real logo asset, light/dark variants |
+| `PrimaryButton` / `SecondaryButton` | Pill-shaped CTAs, dark/light variants |
+| `SectionHeading` | Eyebrow + title (+ optional blue highlight word) + description, left/center aligned |
+| `OJourney` | The 6-step process strip |
+| `ServiceCard` | Icon + title + description card, optional link |
+| `ProductsGrid` | Client-side filterable product grid (category chips) |
+| `PlaceholderPhoto` | Stand-in imagery (see §8) |
+| `CTASection` | Full-width navy closing CTA with the O-ring background motif |
+| `Testimonial` | Star rating + quote + name/role card |
+| `FAQItem` | Accordion question/answer |
+| `Breadcrumb` | `light`/dark-background-aware breadcrumb trail |
+| `ContactForm` | Start a Project inquiry form |
+| `ProcessStep` | Numbered vertical step (How It Works detail list) |
+| `SocialIcon` | Inline SVGs for Instagram/LinkedIn/YouTube/Pinterest (no external icon set has brand marks for these) |
+
+---
+
+## 12. Tech Stack
+
+- Next.js (App Router, TypeScript)
+- Tailwind CSS v4 (CSS-first `@theme` config, no `tailwind.config.js`)
+- `lucide-react` for iconography
+- `next/font/google` for Poppins + Inter
+
+## 13. Adding a New Page
+
+1. Add the route under `src/app/<route>/page.tsx`.
+2. Use `bg-off-white` hero pattern (breadcrumb → eyebrow → H1 → body →
+   trust chips) for consistency with About/Services/Products/Portfolio/
+   Print Concierge/How It Works/Start a Project.
+3. Pull repeating content from `src/data/*.ts` rather than inlining it.
+4. Close with `CTASection`.
+5. Add the route to `Header`'s `NAV_LINKS` and/or `Footer`'s
+   `QUICK_LINKS` if it should be globally reachable.
