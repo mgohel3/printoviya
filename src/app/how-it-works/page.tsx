@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Box,
@@ -79,35 +80,42 @@ export default function HowItWorksPage() {
   return (
     <>
       <section className="bg-off-white py-20">
-        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} light={false} />
-            <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
-              How It Works
-            </p>
-            <h1 className="mt-3 font-heading text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
-              A Simple Process. <span className="text-blue">From Your Idea to Final Print.</span>
-            </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-slate">
-              Whether you have a clear idea or just a rough requirement — we make the entire
-              printing journey simple, guided and stress-free.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <PrimaryButton href="/start-a-project">Start Your Project</PrimaryButton>
-              <SecondaryButton href="/portfolio" icon>
-                See Example Project
-              </SecondaryButton>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-              {TRUST_CHIPS.map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
-                  <item.icon className="h-4 w-4 text-blue" aria-hidden="true" />
-                  <span className="text-xs font-medium text-navy">{item.label}</span>
-                </div>
-              ))}
-            </div>
+        <div className="container-px mx-auto max-w-[1440px]">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} light={false} />
+          <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+            How It Works
+          </p>
+          <h1 className="mt-3 max-w-2xl font-heading text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
+            A Simple Process. <span className="text-blue">From Your Idea to Final Print.</span>
+          </h1>
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-slate">
+            Whether you have a clear idea or just a rough requirement — we make the entire
+            printing journey simple, guided and stress-free.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <PrimaryButton href="/start-a-project">Start Your Project</PrimaryButton>
+            <SecondaryButton href="/portfolio" icon>
+              See Example Project
+            </SecondaryButton>
           </div>
-          <PlaceholderPhoto label="You Tell Us. We Handle the Rest." className="aspect-[4/3] w-full rounded-3xl" />
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+            {TRUST_CHIPS.map((item) => (
+              <div key={item.label} className="flex items-center gap-2">
+                <item.icon className="h-4 w-4 text-blue" aria-hidden="true" />
+                <span className="text-xs font-medium text-navy">{item.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="relative mt-12 aspect-[8/3] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/home-how-it-works-flow.webp"
+              alt="You Share Your Idea → We Design & Prepare → We Handle Printer Requirements → Your Products Get Printed → Delivered to You"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 

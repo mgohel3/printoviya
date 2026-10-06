@@ -339,8 +339,8 @@ once, do not reliably save to disk in this environment).
 | "Custom Products" (08 badge, product-pedestal mockups) | `/products/custom-products` hero | ✅ `custom-products-showcase.webp` |
 | "Custom Products" (PO holding a box, colorful) | Home "Coming Soon" teaser | ✅ `custom-products-made-yours.webp` |
 | "100% Client-Focused" — PO thumbs up + globe | Home "Why Printoviya" section (new, between Design+Print and Print Concierge) | ✅ `client-focused-global.webp` |
-| PO on the phone with idea/message/doc/printer bubbles | `/start-a-project` (Contact) hero background | ⏳ pending |
-| PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero | ⏳ pending |
+| PO on the phone with idea/message/doc/printer bubbles | `/start-a-project` (Contact) hero background | ✅ `contact-po-on-phone.webp` |
+| PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero | note: the file actually sent for this slot was identical (same MD5) to `home-how-it-works-flow.webp` — reused there instead; the icon-chain image is still outstanding if a distinct one exists |
 | Global reach — PO pointing at USA/Canada/Australia on a globe | About "Global Perspective", or Print Concierge | ⏳ pending |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
