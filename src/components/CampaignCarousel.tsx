@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PlaceholderPhoto from "./PlaceholderPhoto";
 
 export type CampaignSlide = {
   /** What the real banner image shows — shown as a caption until the asset is swapped in. */
   pendingLabel: string;
+  /** Path under /public once the real banner is saved, e.g. "/banners/home-hero.webp". */
+  src?: string;
 };
 
 export default function CampaignCarousel({ slides }: { slides: CampaignSlide[] }) {
@@ -17,12 +20,27 @@ export default function CampaignCarousel({ slides }: { slides: CampaignSlide[] }
     return () => clearInterval(id);
   }, [slides.length]);
 
+  const slide = slides[index];
+
   return (
     <div className="relative bg-off-white">
-      <PlaceholderPhoto
-        label={`Banner pending: ${slides[index].pendingLabel}`}
-        className="aspect-[21/6] w-full sm:aspect-[21/5]"
-      />
+      {slide.src ? (
+        <div className="relative aspect-[8/3] w-full">
+          <Image
+            src={slide.src}
+            alt={slide.pendingLabel}
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <PlaceholderPhoto
+          label={`Banner pending: ${slide.pendingLabel}`}
+          className="aspect-[8/3] w-full"
+        />
+      )}
       <div className="absolute inset-y-0 left-3 flex items-center">
         <button
           type="button"
@@ -44,10 +62,10 @@ export default function CampaignCarousel({ slides }: { slides: CampaignSlide[] }
         </button>
       </div>
       <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-        {slides.map((slide, i) => (
+        {slides.map((s, i) => (
           <span
-            key={slide.pendingLabel}
-            className={`h-1.5 w-1.5 rounded-full ${i === index ? "bg-navy" : "bg-navy/25"}`}
+            key={s.pendingLabel}
+            className={`h-1.5 w-1.5 rounded-full ${i === index ? "bg-navy" : "bg-navy/40"}`}
           />
         ))}
       </div>

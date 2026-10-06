@@ -322,32 +322,29 @@ stand-in (a simple face on the O-loop) used only so PO-referencing copy
 `<POMascot />` usage with the real illustration once the banner files are
 saved into the repo.**
 
-### Pending banner images
+### Banner images
 
-Several real, finished banner images exist for this site (shared in
-chat) but could not be saved into the repo because they were pasted
-inline rather than uploaded as attachments — this environment only has
-filesystem access to proper uploads. Once re-sent as attachments, save
-them under `public/banners/` and wire them in at these exact spots
-(each is already marked with a `PlaceholderPhoto`/`CampaignCarousel`
-slot and a code comment naming which banner goes there):
+Real, finished banner images for this site are saved under
+`public/banners/` as they're supplied (they must arrive as chat
+**attachments**, one at a time — images pasted inline, or several at
+once, do not reliably save to disk in this environment).
 
-| Banner (as described) | Goes in |
-| --- | --- |
-| "More than Printing" — PO at desk with branded products | Home campaign carousel |
-| "Print More Than Just Paper" — event booth photo | Home campaign carousel |
-| "More than Printing" — PO gesturing at event booth | Home campaign carousel |
-| "More than Printing" — 5-step flow (You Share Your Idea → … → Delivered to You) | Home "How It Works" section |
-| "Your Print Concierge" — 4-step flow + trust icons + photo | Home "Print Concierge" section |
-| "Custom Products" (08 badge, product-pedestal mockups) | `/products/custom-products` hero |
-| "Custom Products" (PO holding a box, colorful) | Home "Coming Soon" teaser, or alt for the above |
-| "100% Client-Focused" — PO thumbs up + globe | Home or About "Why Printoviya" section |
-| PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero |
-| Global reach — PO pointing at USA/Canada/Australia on a globe | About "Global Perspective", or Print Concierge |
+| Banner (as described) | Goes in | Status |
+| --- | --- | --- |
+| "More than Printing" — PO at desk with branded products | Home campaign carousel (slide 1) | ✅ `home-more-than-printing-desk.webp` |
+| "Print More Than Just Paper" — event booth photo | Home campaign carousel (slide 2) | ✅ `home-print-more-than-paper-booth.webp` |
+| "Your Print Concierge" — 4-step flow + trust icons + photo | Home "Print Concierge" section | ✅ `home-print-concierge-flow.webp` |
+| "More than Printing" — PO gesturing at event booth | Home campaign carousel (slide 3) | ⏳ pending |
+| "More than Printing" — 5-step flow (You Share Your Idea → … → Delivered to You) | Home "How It Works" section | ⏳ pending |
+| "Custom Products" (08 badge, product-pedestal mockups) | `/products/custom-products` hero | ⏳ pending |
+| "Custom Products" (PO holding a box, colorful) | Home "Coming Soon" teaser, or alt for the above | ⏳ pending |
+| "100% Client-Focused" — PO thumbs up + globe | Home or About "Why Printoviya" section | ⏳ pending |
+| PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero | ⏳ pending |
+| Global reach — PO pointing at USA/Canada/Australia on a globe | About "Global Perspective", or Print Concierge | ⏳ pending |
 
-To wire one in: swap the matching `PlaceholderPhoto` for a `next/image`
-pointed at `/banners/<file>`, keeping the same wrapper `className` (the
-`aspect-*` and sizing classes) so layout doesn't shift. For
-`CampaignCarousel`, replace its internal `PlaceholderPhoto` with a real
-`<Image>` keyed by slide index once all three Home-carousel banners are
-saved.
+To wire a pending one in: save the file under `public/banners/`, then
+swap the matching `PlaceholderPhoto` for a `next/image` pointed at
+`/banners/<file>`, keeping the same wrapper sizing so layout doesn't
+shift. `CampaignCarousel`'s `CampaignSlide` type takes an optional `src`
+— set it and the slide renders the real image instead of the pending
+placeholder automatically.

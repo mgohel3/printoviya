@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Palette,
@@ -17,7 +18,6 @@ import {
 } from "lucide-react";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
-import PlaceholderPhoto from "@/components/PlaceholderPhoto";
 import POMascot from "@/components/POMascot";
 import CampaignCarousel, { type CampaignSlide } from "@/components/CampaignCarousel";
 import Testimonial from "@/components/Testimonial";
@@ -31,8 +31,14 @@ export const metadata: Metadata = {
 // PlaceholderPhoto in CampaignCarousel for a real <Image> per slide once
 // the files are saved into public/banners (see DESIGN.md §14).
 const CAROUSEL_SLIDES: CampaignSlide[] = [
-  { pendingLabel: "\"More than Printing\" — PO at desk with branded products" },
-  { pendingLabel: "\"Print More Than Just Paper\" — event booth photo" },
+  {
+    pendingLabel: "\"More than Printing\" — PO at desk with branded products",
+    src: "/banners/home-more-than-printing-desk.webp",
+  },
+  {
+    pendingLabel: "\"Print More Than Just Paper\" — event booth photo",
+    src: "/banners/home-print-more-than-paper-booth.webp",
+  },
   { pendingLabel: "\"More than Printing\" — PO gesturing at event booth" },
 ];
 
@@ -200,36 +206,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Print Concierge — maps to the uploaded "Your Print Concierge" banner */}
-      <section className="bg-navy py-20 text-white">
-        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="font-heading text-3xl font-bold leading-tight sm:text-4xl">
-              You choose the printer. <span className="text-blue">We make it print-ready.</span>
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
-              Already have a printer? Perfect. You don&apos;t need to change your printer —
-              we help you create the artwork, prepare the file and make sure it&apos;s ready
-              for production.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm font-semibold">
-              <span className="rounded-full bg-white/10 px-4 py-2">Design</span>
-              <ArrowRight className="h-4 w-4 text-white/60" />
-              <span className="rounded-full bg-white/10 px-4 py-2">Preflight</span>
-              <ArrowRight className="h-4 w-4 text-white/60" />
-              <span className="rounded-full bg-white/10 px-4 py-2">Printer Support</span>
-            </div>
-            <div className="mt-8">
-              <PrimaryButton href="/print-concierge" variant="light">
-                Meet Your Print Concierge
-              </PrimaryButton>
-            </div>
+      {/* Print Concierge — the uploaded "Your Print Concierge" banner already carries its own headline/flow/CTA, so it runs full-width rather than squeezed into a text column */}
+      <section className="bg-navy py-16 text-white">
+        <div className="container-px mx-auto max-w-[1440px]">
+          <div className="relative aspect-[8/3] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/home-print-concierge-flow.webp"
+              alt="Your Print Concierge — you focus on your business, we handle the printing part"
+              fill
+              sizes="100vw"
+              loading="eager"
+              className="object-cover"
+            />
           </div>
-          <PlaceholderPhoto
-            label={'Banner pending: "Your Print Concierge" — 4-step flow + trust icons'}
-            tone="navy"
-            className="aspect-[4/3] w-full rounded-3xl"
-          />
+          <div className="mt-8 flex justify-center">
+            <PrimaryButton href="/print-concierge" variant="light">
+              Meet Your Print Concierge
+            </PrimaryButton>
+          </div>
         </div>
       </section>
 
