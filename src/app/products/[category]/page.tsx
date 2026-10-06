@@ -42,7 +42,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      {category.isCustom ? (
+      {category.isCustom || category.bannerSrc ? (
         <section className="bg-off-white py-16">
           <div className="container-px mx-auto max-w-[1440px]">
             <Breadcrumb
@@ -55,11 +55,12 @@ export default async function CategoryPage({
             />
             <div className="relative mt-6 aspect-[2.4/1] w-full overflow-hidden rounded-3xl">
               <Image
-                src="/banners/custom-products-showcase.webp"
-                alt="Custom Products — something specific in mind? We'll help with sourcing, design, specifications, printer coordination and print-ready files."
+                src={category.bannerSrc ?? "/banners/custom-products-showcase.webp"}
+                alt={category.isCustom ? "Custom Products — something specific in mind? We'll help with sourcing, design, specifications, printer coordination and print-ready files." : category.title}
                 fill
                 sizes="100vw"
                 priority
+                loading="eager"
                 className="object-cover"
               />
             </div>

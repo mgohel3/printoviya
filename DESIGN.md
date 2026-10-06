@@ -311,6 +311,13 @@ Matte/Gloss/Velvet Lamination, Spot UV, Foil…). Add a product by pushing
 onto a category's `products` array — the `[category]/[product]` route
 picks it up automatically via `generateStaticParams`.
 
+A category whose own banner image already contains its heading, tagline,
+icon row and "View Products" CTA baked in sets `bannerSrc` on its
+`CatalogCategory` entry instead of relying on the plain text hero —
+`/products/[category]/page.tsx` renders the full-width banner
+(`aspect-[2.4/1]`, rounded-3xl) in place of the breadcrumb+h1+description
+block whenever `isCustom` or `bannerSrc` is present.
+
 ### PO — the brand mascot
 
 The client's actual PO character is an illustrated, hoodie-wearing
@@ -342,6 +349,11 @@ once, do not reliably save to disk in this environment).
 | PO on the phone with idea/message/doc/printer bubbles | `/start-a-project` (Contact) hero background | ✅ `contact-po-on-phone.webp` |
 | PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero | note: the file actually sent for this slot was identical (same MD5) to `home-how-it-works-flow.webp` — reused there instead; the icon-chain image is still outstanding if a distinct one exists |
 | Global reach — PO pointing at USA/Canada/Australia on a globe | About "Global Perspective", or Print Concierge | ⏳ pending |
+| "01 Business Essentials" — PO at branded stationery desk | `/products/business-essentials` hero | ✅ `category-business-essentials.webp` |
+| "02 Packaging & Product Branding" — PO with branded packaging/boxes | `/products/packaging-product-branding` hero | ✅ `category-packaging-product-branding.webp` |
+| "03 Marketing & Promotional Print" — PO with flyers/brochures/promo items | `/products/marketing-promotional-print` hero | ✅ `category-marketing-promotional-print.webp` |
+| "04 Banners & Large Displays" — PO with roll-up/large-format banners | `/products/banners-large-displays` hero | ✅ `category-banners-large-displays.webp` |
+| "05 Branding, Graphics & Signage" — PO outside branded storefront/signage | `/products/branding-graphics-signage` hero | ✅ `category-branding-graphics-signage.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width
