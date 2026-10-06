@@ -1,36 +1,73 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
-  Globe2,
+  Palette,
   Printer,
-  PackageCheck,
-  SmilePlus,
   ArrowRight,
-  CheckCircle2,
+  Scissors,
+  Ruler,
+  FileWarning,
+  HelpCircle,
+  CreditCard,
+  Package,
+  GalleryHorizontal,
+  BookOpen,
+  Shirt,
+  Sparkles,
 } from "lucide-react";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
-import SectionHeading from "@/components/SectionHeading";
-import OJourney from "@/components/OJourney";
-import ServiceCard from "@/components/ServiceCard";
 import PlaceholderPhoto from "@/components/PlaceholderPhoto";
-import CTASection from "@/components/CTASection";
+import POMascot from "@/components/POMascot";
+import CampaignCarousel, { type CampaignSlide } from "@/components/CampaignCarousel";
 import Testimonial from "@/components/Testimonial";
-import { journeySteps } from "@/data/journey";
-import { services } from "@/data/services";
-import { catalogCategories } from "@/data/catalog";
 
 export const metadata: Metadata = {
   description:
-    "Design. Coordinate. Print. We've Got You. Printoviya helps you move from requirement to final product — any product, any printer, anywhere.",
+    "Design it. Print it. Make it yours. From creative design to print-ready production, Printoviya helps businesses bring their ideas to life.",
 };
 
-const TRUST_ITEMS = [
-  { icon: Globe2, label: "Global Support" },
-  { icon: Printer, label: "Any Printer" },
-  { icon: PackageCheck, label: "All Print Products" },
-  { icon: SmilePlus, label: "No Headache" },
+// Each slide maps to one of the uploaded PO banner images — swap the
+// PlaceholderPhoto in CampaignCarousel for a real <Image> per slide once
+// the files are saved into public/banners (see DESIGN.md §14).
+const CAROUSEL_SLIDES: CampaignSlide[] = [
+  { pendingLabel: "\"More than Printing\" — PO at desk with branded products" },
+  { pendingLabel: "\"Print More Than Just Paper\" — event booth photo" },
+  { pendingLabel: "\"More than Printing\" — PO gesturing at event booth" },
+];
+
+const HERO_PRODUCTS = [
+  { icon: CreditCard, label: "Business Card" },
+  { icon: Package, label: "Packaging" },
+  { icon: Shirt, label: "T-Shirt" },
+];
+
+const DESIGN_ITEMS = ["Branding", "Packaging Design", "Print-Ready Design", "Social Media Design"];
+const PRINT_ITEMS = ["Business Cards", "Packaging", "Signage", "Marketing Materials", "Merchandise"];
+
+const POPULAR_SERVICES = [
+  { title: "Business Cards", icon: CreditCard, href: "/products/business-essentials/business-cards" },
+  { title: "Packaging", icon: Package, href: "/products/packaging-product-branding" },
+  { title: "Banners & Signage", icon: GalleryHorizontal, href: "/products/banners-large-displays" },
+  { title: "Marketing Materials", icon: BookOpen, href: "/products/marketing-promotional-print" },
+  { title: "Merchandise", icon: Shirt, href: "/products/apparel-branded-merchandise" },
+  { title: "Custom Projects", icon: Sparkles, href: "/products/custom-products" },
+];
+
+// "More than Printing" 5-step flow banner maps directly onto this list.
+const HOW_IT_WORKS = [
+  { number: "01", title: "You Share Your Idea", body: "Tell us what you need." },
+  { number: "02", title: "We Design & Prepare", body: "Print-ready artwork, done right." },
+  { number: "03", title: "We Handle Printer Requirements", body: "Specs, coordination, no headache." },
+  { number: "04", title: "Your Products Get Printed", body: "With us, or your chosen printer." },
+  { number: "05", title: "Delivered to You", body: "On time, exactly as planned." },
+];
+
+const PO_PROBLEMS = [
+  { icon: Ruler, label: "Wrong size?" },
+  { icon: Scissors, label: "Missing bleed?" },
+  { icon: FileWarning, label: "Low resolution?" },
+  { icon: HelpCircle, label: "Confusing printer specs?" },
 ];
 
 const TESTIMONIALS = [
@@ -57,186 +94,238 @@ const TESTIMONIALS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — full banner image */}
-      <section className="relative isolate overflow-hidden">
-        {/* Desktop / tablet banner */}
-        <Image
-          src="/hero/home-hero-desktop.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-cover sm:block"
-        />
-        {/* Mobile banner (swap for a differently-cropped image so the subject isn't lost) */}
-        <Image
-          src="/hero/home-hero-mobile.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover sm:hidden"
-        />
-        <div className="absolute inset-0 bg-navy/55" aria-hidden="true" />
+      <CampaignCarousel slides={CAROUSEL_SLIDES} />
 
-        <div className="container-px relative mx-auto flex min-h-[560px] max-w-[1440px] flex-col justify-center py-20 sm:min-h-[640px] lg:min-h-[680px]">
-          <div className="max-w-2xl">
-            <p className="mb-4 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
-              Ideas to life. Without the headache.
-            </p>
-            <h1 className="font-heading text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-[3.4rem]">
-              Design. Coordinate. Print.
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-off-white">
+        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+          <div>
+            <h1 className="font-heading text-4xl font-extrabold leading-[1.1] text-navy sm:text-5xl lg:text-[3.4rem]">
+              Design it.
               <br />
-              <span className="text-blue">We&apos;ve Got You.</span>
+              Print it.
+              <br />
+              <span className="text-blue">Make it yours.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80">
-              From design and print-ready artwork to printer coordination and production
-              support, Printoviya helps you move from requirement to final product without
-              the usual printing headache.
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate">
+              From creative design to print-ready production, Printoviya helps businesses
+              bring their ideas to life.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <PrimaryButton href="/start-a-project" variant="light">
-                Tell Us What You Need
-              </PrimaryButton>
-              <SecondaryButton href="/how-it-works" icon variant="outline-light">
-                See How It Works
-              </SecondaryButton>
+              <PrimaryButton href="/start-a-project">Start a Project</PrimaryButton>
+              <SecondaryButton href="/services">Explore Services</SecondaryButton>
             </div>
-            <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {TRUST_ITEMS.map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
-                  <item.icon className="h-5 w-5 shrink-0 text-blue" aria-hidden="true" />
-                  <span className="text-xs font-medium text-white">{item.label}</span>
+          </div>
+
+          <div className="relative flex items-center justify-center">
+            <div className="relative flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80">
+              <div className="absolute inset-0 rounded-full bg-light-blue" aria-hidden="true" />
+              <POMascot className="h-32 w-32 sm:h-36 sm:w-36" />
+              {HERO_PRODUCTS.map((item, i) => {
+                const angle = (i / HERO_PRODUCTS.length) * 2 * Math.PI - Math.PI / 2;
+                const radius = 130;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+                return (
+                  <div
+                    key={item.label}
+                    className="absolute flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1 rounded-2xl bg-white p-2 text-center shadow-lg"
+                    style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)` }}
+                  >
+                    <item.icon className="h-6 w-6 text-blue" aria-hidden="true" />
+                    <span className="text-[9px] font-semibold leading-none text-navy">
+                      {item.label}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Design + Print */}
+      <section className="bg-white py-20">
+        <div className="container-px mx-auto max-w-[1440px]">
+          <h2 className="max-w-xl font-heading text-3xl font-bold leading-tight text-navy sm:text-4xl">
+            Whatever you need to create. <span className="text-blue">We can help you bring it to life.</span>
+          </h2>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="rounded-3xl bg-off-white p-8 sm:p-10">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy">
+                <Palette className="h-6 w-6 text-white" aria-hidden="true" />
+              </div>
+              <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+                Design
+              </p>
+              <h3 className="mt-1 font-heading text-2xl font-bold text-navy">Build the look.</h3>
+              <ul className="mt-4 space-y-2">
+                {DESIGN_ITEMS.map((item) => (
+                  <li key={item} className="text-sm text-slate">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/services"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-blue hover:text-blue-dark"
+              >
+                Explore Design <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="rounded-3xl bg-off-white p-8 sm:p-10">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue">
+                <Printer className="h-6 w-6 text-white" aria-hidden="true" />
+              </div>
+              <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+                Print
+              </p>
+              <h3 className="mt-1 font-heading text-2xl font-bold text-navy">Make it real.</h3>
+              <ul className="mt-4 space-y-2">
+                {PRINT_ITEMS.map((item) => (
+                  <li key={item} className="text-sm text-slate">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/products"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-blue hover:text-blue-dark"
+              >
+                Explore Print <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Print Concierge — maps to the uploaded "Your Print Concierge" banner */}
+      <section className="bg-navy py-20 text-white">
+        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div>
+            <h2 className="font-heading text-3xl font-bold leading-tight sm:text-4xl">
+              You choose the printer. <span className="text-blue">We make it print-ready.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
+              Already have a printer? Perfect. You don&apos;t need to change your printer —
+              we help you create the artwork, prepare the file and make sure it&apos;s ready
+              for production.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm font-semibold">
+              <span className="rounded-full bg-white/10 px-4 py-2">Design</span>
+              <ArrowRight className="h-4 w-4 text-white/60" />
+              <span className="rounded-full bg-white/10 px-4 py-2">Preflight</span>
+              <ArrowRight className="h-4 w-4 text-white/60" />
+              <span className="rounded-full bg-white/10 px-4 py-2">Printer Support</span>
+            </div>
+            <div className="mt-8">
+              <PrimaryButton href="/print-concierge" variant="light">
+                Meet Your Print Concierge
+              </PrimaryButton>
+            </div>
+          </div>
+          <PlaceholderPhoto
+            label={'Banner pending: "Your Print Concierge" — 4-step flow + trust icons'}
+            tone="navy"
+            className="aspect-[4/3] w-full rounded-3xl"
+          />
+        </div>
+      </section>
+
+      {/* Popular Services */}
+      <section className="bg-off-white py-20">
+        <div className="container-px mx-auto max-w-[1440px]">
+          <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
+            What are you printing <span className="text-blue">today?</span>
+          </h2>
+          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+            {POPULAR_SERVICES.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
+              >
+                <div className="flex aspect-square items-center justify-center bg-light-blue">
+                  <item.icon className="h-8 w-8 text-blue" aria-hidden="true" />
+                </div>
+                <p className="p-3 text-xs font-semibold text-navy">{item.title}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works — maps to the uploaded "More than Printing" 5-step banner */}
+      <section className="bg-white py-20">
+        <div className="container-px mx-auto max-w-[1440px]">
+          <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
+            From idea to print. <span className="text-blue">Without the headache.</span>
+          </h2>
+          <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+            {HOW_IT_WORKS.map((step) => (
+              <div key={step.number} className="rounded-2xl bg-off-white p-5 text-center">
+                <p className="font-heading text-xs font-semibold text-blue">{step.number}</p>
+                <h3 className="mt-2 font-heading text-sm font-semibold text-navy">{step.title}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-slate">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PO Personality Section */}
+      <section className="bg-navy py-20 text-white">
+        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div className="flex justify-center lg:order-2">
+            <POMascot className="h-40 w-40" />
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl font-bold leading-tight sm:text-4xl">
+              Got a print problem? <span className="text-blue">Send it to PO.</span>
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
+              PO knows the little things that can mess up a print job.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {PO_PROBLEMS.map((item) => (
+                <div key={item.label} className="flex items-center gap-2 rounded-xl bg-white/10 px-4 py-3">
+                  <item.icon className="h-4 w-4 shrink-0 text-blue" aria-hidden="true" />
+                  <span className="text-xs font-medium">{item.label}</span>
                 </div>
               ))}
             </div>
+            <p className="mt-6 font-heading text-lg font-semibold text-blue">PO&apos;s got it.</p>
+            <div className="mt-6">
+              <PrimaryButton href="/print-concierge" variant="light">
+                Ask PO
+              </PrimaryButton>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* A Simple Journey */}
-      <section className="container-px mx-auto max-w-[1440px] py-20">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading eyebrow="A Simple Journey" title="From" highlight="A to Z." />
-          <p className="text-sm font-medium text-slate">You tell us. We take care of the rest.</p>
-        </div>
-        <div className="mt-14">
-          <OJourney steps={journeySteps} />
-        </div>
-      </section>
-
-      {/* More Than Printing */}
+      {/* Coming Soon / Shop teaser */}
       <section className="bg-off-white py-20">
-        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="More Than Printing"
-              title="Design. Products. Support."
-              highlight="All in One Place."
-              description="From branding to packaging, merchandise to social media — we help individuals, businesses and brands bring their ideas to life, without the runaround."
-            />
-            <div className="mt-8">
-              <SecondaryButton href="/services">Explore All Services</SecondaryButton>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {services.slice(0, 6).map((service) => (
-              <ServiceCard
-                key={service.slug}
-                title={service.title}
-                description={service.short_description}
-                icon={service.icon}
-                href={`/services#${service.slug}`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Printoviya */}
-      <section className="bg-light-blue py-20">
-        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-14 lg:grid-cols-2">
-          <div>
-            <p className="mb-3 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
-              Why Printoviya
-            </p>
-            <h2 className="font-heading text-3xl font-bold leading-tight text-navy sm:text-4xl">
-              Your Partner <span className="text-blue">Beyond Printing.</span>
-            </h2>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-slate">
-              You don&apos;t need to figure it all out. Whether you print with us or not,
-              we&apos;re here to help you make it happen.
-            </p>
-            <ul className="mt-8 space-y-4">
-              {[
-                "Expert guidance",
-                "Printer coordination",
-                "File & technical support",
-                "Global reach",
-                "Friendly, human support",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <CheckCircle2 className="h-5 w-5 shrink-0 text-blue" aria-hidden="true" />
-                  <span className="text-sm font-medium text-navy">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative">
-            <div className="rounded-3xl bg-navy p-10 text-white">
-              <p className="font-heading text-lg font-semibold">100% Client-Focused</p>
-              <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                <div className="rounded-xl bg-white/10 p-4">Global Support</div>
-                <div className="rounded-xl bg-white/10 p-4">Any Printer, No Problem</div>
-                <div className="col-span-2 rounded-xl bg-white/10 p-4">Hassle-Free Process</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="container-px mx-auto max-w-[1440px] py-20">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading
-            eyebrow="Featured Products"
-            title="Create. Customize. Print."
-            highlight="Your Way."
-            description="From everyday essentials to custom creations — explore popular products ready for your brand, business or special occasion."
-          />
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue hover:text-blue-dark"
-          >
-            View All Products <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4">
-          {catalogCategories
-            .filter((c) => !c.isCustom)
-            .slice(0, 4)
-            .map((category) => (
-              <Link
-                key={category.slug}
-                href={`/products/${category.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
-              >
-                <PlaceholderPhoto icon={category.icon} className="aspect-square w-full" />
-                <p className="p-3 text-xs font-semibold text-navy">{category.title}</p>
-              </Link>
-            ))}
+        <div className="container-px mx-auto max-w-[1440px] text-center">
+          <span className="inline-flex rounded-full bg-light-blue px-4 py-1.5 text-xs font-heading font-semibold uppercase tracking-wide text-blue">
+            Coming Soon
+          </span>
+          <h2 className="mx-auto mt-4 max-w-xl font-heading text-3xl font-bold text-navy sm:text-4xl">
+            Something new is coming to <span className="text-blue">PO World.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-slate">
+            Custom products. Special collections. Seasonal drops.
+          </p>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="bg-off-white py-20">
+      <section className="bg-white py-20">
         <div className="container-px mx-auto max-w-[1440px]">
-          <SectionHeading
-            eyebrow="What Our Clients Say"
-            title="Real People."
-            highlight="Real Experiences."
-            align="left"
-          />
+          <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
+            Real People. <span className="text-blue">Real Experiences.</span>
+          </h2>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TESTIMONIALS.map((t) => (
               <Testimonial key={t.name} {...t} />
@@ -245,13 +334,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CTASection
-        title="Ready to make"
-        highlight="printing easier?"
-        description="Tell us what you need — design, print or just guidance. We're here to help."
-        primaryLabel="Start a Project"
-        primaryHref="/start-a-project"
-      />
+      {/* Final CTA */}
+      <section className="relative overflow-hidden bg-navy py-20 text-white">
+        <div
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full border-[40px] border-blue/10"
+          aria-hidden="true"
+        />
+        <div className="container-px relative mx-auto max-w-4xl text-center">
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl">
+            Have something in mind? <span className="text-blue">Let&apos;s make it real.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-white/75">Design it. Print it. Brand it.</p>
+          <div className="mt-8 flex justify-center">
+            <PrimaryButton href="/start-a-project" variant="light">
+              Start Your Project
+            </PrimaryButton>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

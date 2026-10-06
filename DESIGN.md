@@ -254,8 +254,9 @@ are added, and add real projects as plain `PortfolioProject` objects with
 | `SectionHeading` | Eyebrow + title (+ optional blue highlight word) + description, left/center aligned |
 | `OJourney` | The 6-step process strip |
 | `ServiceCard` | Icon + title + description card, optional link |
-| `ProductsGrid` | Client-side filterable product grid (category chips) |
 | `PlaceholderPhoto` | Stand-in imagery (see §8) |
+| `POMascot` | Placeholder "PO" character mark (see §14) |
+| `CampaignCarousel` | Home-page rotating banner strip, one slide per real PO banner image (see §14) |
 | `CTASection` | Full-width navy closing CTA with the O-ring background motif |
 | `Testimonial` | Star rating + quote + name/role card |
 | `FAQItem` | Accordion question/answer |
@@ -283,3 +284,70 @@ are added, and add real projects as plain `PortfolioProject` objects with
 4. Close with `CTASection`.
 5. Add the route to `Header`'s `NAV_LINKS` and/or `Footer`'s
    `QUICK_LINKS` if it should be globally reachable.
+
+---
+
+## 14. Product catalog & the "PO" banner images
+
+### Catalog structure
+
+`src/data/catalog.ts` holds the real 8-category product catalog (from the
+client's product-list document), nested as
+`/products/[category]/[product]`:
+
+1. Business Essentials
+2. Packaging & Product Branding
+3. Marketing & Promotional Print
+4. Banners & Large Displays
+5. Branding, Graphics & Signage
+6. Events & Brand Displays
+7. Apparel & Branded Merchandise
+8. Custom Products — no fixed product list; renders a dedicated
+   "tell us what you need" CTA page instead of a grid
+   (`CatalogCategory.isCustom`)
+
+Each product lists its real variant/finish options (e.g. Business Cards →
+Matte/Gloss/Velvet Lamination, Spot UV, Foil…). Add a product by pushing
+onto a category's `products` array — the `[category]/[product]` route
+picks it up automatically via `generateStaticParams`.
+
+### PO — the brand mascot
+
+The client's actual PO character is an illustrated, hoodie-wearing
+mascot (dark hair, glasses, a small "PO" wordmark on the hoodie) who
+appears in a set of pre-made marketing banner images — not an abstract
+shape. `POMascot` (`src/components/POMascot.tsx`) is a placeholder
+stand-in (a simple face on the O-loop) used only so PO-referencing copy
+("Ask PO", "Send it to PO") has something to sit next to. **Replace every
+`<POMascot />` usage with the real illustration once the banner files are
+saved into the repo.**
+
+### Pending banner images
+
+Several real, finished banner images exist for this site (shared in
+chat) but could not be saved into the repo because they were pasted
+inline rather than uploaded as attachments — this environment only has
+filesystem access to proper uploads. Once re-sent as attachments, save
+them under `public/banners/` and wire them in at these exact spots
+(each is already marked with a `PlaceholderPhoto`/`CampaignCarousel`
+slot and a code comment naming which banner goes there):
+
+| Banner (as described) | Goes in |
+| --- | --- |
+| "More than Printing" — PO at desk with branded products | Home campaign carousel |
+| "Print More Than Just Paper" — event booth photo | Home campaign carousel |
+| "More than Printing" — PO gesturing at event booth | Home campaign carousel |
+| "More than Printing" — 5-step flow (You Share Your Idea → … → Delivered to You) | Home "How It Works" section |
+| "Your Print Concierge" — 4-step flow + trust icons + photo | Home "Print Concierge" section |
+| "Custom Products" (08 badge, product-pedestal mockups) | `/products/custom-products` hero |
+| "Custom Products" (PO holding a box, colorful) | Home "Coming Soon" teaser, or alt for the above |
+| "100% Client-Focused" — PO thumbs up + globe | Home or About "Why Printoviya" section |
+| PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero |
+| Global reach — PO pointing at USA/Canada/Australia on a globe | About "Global Perspective", or Print Concierge |
+
+To wire one in: swap the matching `PlaceholderPhoto` for a `next/image`
+pointed at `/banners/<file>`, keeping the same wrapper `className` (the
+`aspect-*` and sizing classes) so layout doesn't shift. For
+`CampaignCarousel`, replace its internal `PlaceholderPhoto` with a real
+`<Image>` keyed by slide index once all three Home-carousel banners are
+saved.
