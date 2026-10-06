@@ -19,7 +19,7 @@ import CTASection from "@/components/CTASection";
 import Testimonial from "@/components/Testimonial";
 import { journeySteps } from "@/data/journey";
 import { services } from "@/data/services";
-import { products } from "@/data/products";
+import { catalogCategories } from "@/data/catalog";
 
 export const metadata: Metadata = {
   description:
@@ -212,16 +212,19 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4">
-          {products.slice(0, 4).map((product) => (
-            <Link
-              key={product.slug}
-              href={`/products/${product.slug}`}
-              className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
-            >
-              <PlaceholderPhoto icon={product.icon} className="aspect-square w-full" />
-              <p className="p-3 text-xs font-semibold text-navy">{product.title}</p>
-            </Link>
-          ))}
+          {catalogCategories
+            .filter((c) => !c.isCustom)
+            .slice(0, 4)
+            .map((category) => (
+              <Link
+                key={category.slug}
+                href={`/products/${category.slug}`}
+                className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
+              >
+                <PlaceholderPhoto icon={category.icon} className="aspect-square w-full" />
+                <p className="p-3 text-xs font-semibold text-navy">{category.title}</p>
+              </Link>
+            ))}
         </div>
       </section>
 
