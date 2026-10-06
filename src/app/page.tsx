@@ -201,9 +201,15 @@ export default function HomePage() {
       </section>
 
       {/* Why Printoviya — the uploaded "100% Client-Focused" banner */}
-      <section className="bg-off-white py-16">
+      <section className="bg-off-white py-20">
         <div className="container-px mx-auto max-w-[1440px]">
-          <div className="relative aspect-[3/1] w-full overflow-hidden rounded-3xl">
+          <p className="font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+            Why Printoviya
+          </p>
+          <h2 className="mt-3 max-w-xl font-heading text-3xl font-bold text-navy sm:text-4xl">
+            A Partner You Can <span className="text-blue">Rely On.</span>
+          </h2>
+          <div className="relative mt-10 aspect-[3/1] w-full overflow-hidden rounded-3xl">
             <Image
               src="/banners/client-focused-global.webp"
               alt="100% Client-Focused — Global Support, Any Printer No Problem, Hassle-Free Process"
