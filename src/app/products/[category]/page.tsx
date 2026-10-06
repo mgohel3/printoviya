@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -41,25 +42,50 @@ export default async function CategoryPage({
 
   return (
     <>
-      <section className="bg-off-white py-20">
-        <div className="container-px mx-auto max-w-[1440px]">
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Products", href: "/products" },
-              { label: category.title },
-            ]}
-            light={false}
-          />
-          <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
-            {category.tagline}
-          </p>
-          <h1 className="mt-3 max-w-2xl font-heading text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
-            {category.title}
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate">{category.description}</p>
-        </div>
-      </section>
+      {category.isCustom ? (
+        <section className="bg-off-white py-16">
+          <div className="container-px mx-auto max-w-[1440px]">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Products", href: "/products" },
+                { label: category.title },
+              ]}
+              light={false}
+            />
+            <div className="relative mt-6 aspect-[2.4/1] w-full overflow-hidden rounded-3xl">
+              <Image
+                src="/banners/custom-products-showcase.webp"
+                alt="Custom Products — something specific in mind? We'll help with sourcing, design, specifications, printer coordination and print-ready files."
+                fill
+                sizes="100vw"
+                priority
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="bg-off-white py-20">
+          <div className="container-px mx-auto max-w-[1440px]">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Products", href: "/products" },
+                { label: category.title },
+              ]}
+              light={false}
+            />
+            <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+              {category.tagline}
+            </p>
+            <h1 className="mt-3 max-w-2xl font-heading text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
+              {category.title}
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate">{category.description}</p>
+          </div>
+        </section>
+      )}
 
       {category.isCustom ? (
         <section className="container-px mx-auto max-w-[1440px] py-20">

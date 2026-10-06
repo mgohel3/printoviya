@@ -39,7 +39,10 @@ const CAROUSEL_SLIDES: CampaignSlide[] = [
     pendingLabel: "\"Print More Than Just Paper\" — event booth photo",
     src: "/banners/home-print-more-than-paper-booth.webp",
   },
-  { pendingLabel: "\"More than Printing\" — PO gesturing at event booth" },
+  {
+    pendingLabel: "\"More than Printing\" — PO gesturing at event booth",
+    src: "/banners/home-more-than-printing-booth-gesture.webp",
+  },
 ];
 
 const HERO_PRODUCTS = [
@@ -58,15 +61,6 @@ const POPULAR_SERVICES = [
   { title: "Marketing Materials", icon: BookOpen, href: "/products/marketing-promotional-print" },
   { title: "Merchandise", icon: Shirt, href: "/products/apparel-branded-merchandise" },
   { title: "Custom Projects", icon: Sparkles, href: "/products/custom-products" },
-];
-
-// "More than Printing" 5-step flow banner maps directly onto this list.
-const HOW_IT_WORKS = [
-  { number: "01", title: "You Share Your Idea", body: "Tell us what you need." },
-  { number: "02", title: "We Design & Prepare", body: "Print-ready artwork, done right." },
-  { number: "03", title: "We Handle Printer Requirements", body: "Specs, coordination, no headache." },
-  { number: "04", title: "Your Products Get Printed", body: "With us, or your chosen printer." },
-  { number: "05", title: "Delivered to You", body: "On time, exactly as planned." },
 ];
 
 const PO_PROBLEMS = [
@@ -206,6 +200,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Why Printoviya — the uploaded "100% Client-Focused" banner */}
+      <section className="bg-off-white py-16">
+        <div className="container-px mx-auto max-w-[1440px]">
+          <div className="relative aspect-[3/1] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/client-focused-global.webp"
+              alt="100% Client-Focused — Global Support, Any Printer No Problem, Hassle-Free Process"
+              fill
+              sizes="100vw"
+              loading="eager"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Print Concierge — the uploaded "Your Print Concierge" banner already carries its own headline/flow/CTA, so it runs full-width rather than squeezed into a text column */}
       <section className="bg-navy py-16 text-white">
         <div className="container-px mx-auto max-w-[1440px]">
@@ -250,20 +260,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works — maps to the uploaded "More than Printing" 5-step banner */}
+      {/* How It Works — the uploaded 5-step banner carries its own flow + headline */}
       <section className="bg-white py-20">
         <div className="container-px mx-auto max-w-[1440px]">
           <h2 className="font-heading text-3xl font-bold text-navy sm:text-4xl">
             From idea to print. <span className="text-blue">Without the headache.</span>
           </h2>
-          <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-            {HOW_IT_WORKS.map((step) => (
-              <div key={step.number} className="rounded-2xl bg-off-white p-5 text-center">
-                <p className="font-heading text-xs font-semibold text-blue">{step.number}</p>
-                <h3 className="mt-2 font-heading text-sm font-semibold text-navy">{step.title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-slate">{step.body}</p>
-              </div>
-            ))}
+          <div className="relative mt-10 aspect-[8/3] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/home-how-it-works-flow.webp"
+              alt="You Share Your Idea → We Design & Prepare → We Handle Printer Requirements → Your Products Get Printed → Delivered to You"
+              fill
+              sizes="100vw"
+              loading="eager"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
@@ -299,7 +310,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Coming Soon / Shop teaser */}
+      {/* Coming Soon / Shop teaser — the uploaded "Custom Products" banner */}
       <section className="bg-off-white py-20">
         <div className="container-px mx-auto max-w-[1440px] text-center">
           <span className="inline-flex rounded-full bg-light-blue px-4 py-1.5 text-xs font-heading font-semibold uppercase tracking-wide text-blue">
@@ -311,6 +322,16 @@ export default function HomePage() {
           <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-slate">
             Custom products. Special collections. Seasonal drops.
           </p>
+          <div className="relative mx-auto mt-8 aspect-[2.4/1] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/custom-products-made-yours.webp"
+              alt="Custom Products — something specific in mind? Tell us what you need."
+              fill
+              sizes="100vw"
+              loading="eager"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 

@@ -334,13 +334,20 @@ once, do not reliably save to disk in this environment).
 | "More than Printing" — PO at desk with branded products | Home campaign carousel (slide 1) | ✅ `home-more-than-printing-desk.webp` |
 | "Print More Than Just Paper" — event booth photo | Home campaign carousel (slide 2) | ✅ `home-print-more-than-paper-booth.webp` |
 | "Your Print Concierge" — 4-step flow + trust icons + photo | Home "Print Concierge" section | ✅ `home-print-concierge-flow.webp` |
-| "More than Printing" — PO gesturing at event booth | Home campaign carousel (slide 3) | ⏳ pending |
-| "More than Printing" — 5-step flow (You Share Your Idea → … → Delivered to You) | Home "How It Works" section | ⏳ pending |
-| "Custom Products" (08 badge, product-pedestal mockups) | `/products/custom-products` hero | ⏳ pending |
-| "Custom Products" (PO holding a box, colorful) | Home "Coming Soon" teaser, or alt for the above | ⏳ pending |
-| "100% Client-Focused" — PO thumbs up + globe | Home or About "Why Printoviya" section | ⏳ pending |
+| "More than Printing" — PO gesturing at event booth | Home campaign carousel (slide 3) | ✅ `home-more-than-printing-booth-gesture.webp` |
+| "More than Printing" — 5-step flow (You Share Your Idea → … → Delivered to You) | Home "How It Works" section | ✅ `home-how-it-works-flow.webp` |
+| "Custom Products" (08 badge, product-pedestal mockups) | `/products/custom-products` hero | ✅ `custom-products-showcase.webp` |
+| "Custom Products" (PO holding a box, colorful) | Home "Coming Soon" teaser | ✅ `custom-products-made-yours.webp` |
+| "100% Client-Focused" — PO thumbs up + globe | Home "Why Printoviya" section (new, between Design+Print and Print Concierge) | ✅ `client-focused-global.webp` |
+| PO on the phone with idea/message/doc/printer bubbles | `/start-a-project` (Contact) hero background | ⏳ pending |
 | PO with design-process icon chain (lightbulb→doc→CMYK→printer→box) | `/how-it-works` hero | ⏳ pending |
 | Global reach — PO pointing at USA/Canada/Australia on a globe | About "Global Perspective", or Print Concierge | ⏳ pending |
+
+All `next/image` banners on the Home page use `loading="eager"` — Next's
+default lazy-loading occasionally left a blank gap on these full-width
+decorative banners during the full-page screenshot checks used to verify
+them, so eager loading is the standard for this page's banner slots
+(the hero/above-the-fold slide additionally uses `priority`).
 
 To wire a pending one in: save the file under `public/banners/`, then
 swap the matching `PlaceholderPhoto` for a `next/image` pointed at
