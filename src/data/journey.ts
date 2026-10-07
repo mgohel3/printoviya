@@ -35,11 +35,13 @@ export const journeySteps: JourneyStep[] = [
     title: "Print & Produce",
     description: "You print with us or your chosen printer.",
     icon: Printer,
+    imageSrc: "/banners/journey-print-produce.webp",
   },
   {
     number: "06",
     title: "Get Your Final Product",
     description: "On time, hassle-free. Just results.",
     icon: PackageCheck,
+    imageSrc: "/banners/journey-final-product.webp",
   },
 ];

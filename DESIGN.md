@@ -336,9 +336,7 @@ has the same optional `imageSrc` — used only by the larger 6-step card
 grid on `/how-it-works` (`aspect-[16/10]`, replacing `PlaceholderPhoto`),
 not by the compact `OJourney` icon strip reused across Home, Print
 Concierge and Start a Project, which always shows the icon regardless.
-4 of the 6 steps have real images so far (Tell Us Your Need → Coordinate
-With Your Printer); Print & Produce and Get Your Final Product still
-fall back to the icon placeholder.
+All 6 steps now have real images, completing the card grid.
 
 ### PO — the brand mascot
 
@@ -396,6 +394,8 @@ once, do not reliably save to disk in this environment).
 | "We Understand & Suggest" step illustration | `/how-it-works` "6 Simple Steps" card 2 | ✅ `journey-we-understand-suggest.webp` |
 | "Design & Prepare" step illustration | `/how-it-works` "6 Simple Steps" card 3 | ✅ `journey-design-prepare.webp` |
 | "Coordinate With Your Printer" step illustration | `/how-it-works` "6 Simple Steps" card 4 | ✅ `journey-coordinate-with-printer.webp` |
+| "Print & Produce" step illustration | `/how-it-works` "6 Simple Steps" card 5 | ✅ `journey-print-produce.webp` |
+| "Get Your Final Product" step illustration | `/how-it-works` "6 Simple Steps" card 6 | ✅ `journey-final-product.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width
