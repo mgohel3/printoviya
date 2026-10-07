@@ -141,7 +141,20 @@ export default function HowItWorksPage() {
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {journeySteps.map((step, i) => (
             <div key={step.number} className="overflow-hidden rounded-2xl border border-border bg-off-white">
-              <PlaceholderPhoto icon={step.icon} className="aspect-[16/10] w-full" />
+              {step.imageSrc ? (
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src={step.imageSrc}
+                    alt={step.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    loading="eager"
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <PlaceholderPhoto icon={step.icon} className="aspect-[16/10] w-full" />
+              )}
               <div className="p-5">
                 <div className="flex items-center gap-2">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue text-[10px] font-bold text-white">

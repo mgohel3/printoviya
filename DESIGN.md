@@ -331,6 +331,15 @@ now have real images, so the grid shows the full set
 (`lg:grid-cols-4`, two rows of 4) rather than the original 6-item
 `slice(0, 6)`.
 
+`JourneyStep` (`src/components/OJourney.tsx` / `src/data/journey.ts`)
+has the same optional `imageSrc` — used only by the larger 6-step card
+grid on `/how-it-works` (`aspect-[16/10]`, replacing `PlaceholderPhoto`),
+not by the compact `OJourney` icon strip reused across Home, Print
+Concierge and Start a Project, which always shows the icon regardless.
+4 of the 6 steps have real images so far (Tell Us Your Need → Coordinate
+With Your Printer); Print & Produce and Get Your Final Product still
+fall back to the icon placeholder.
+
 ### PO — the brand mascot
 
 The client's actual PO character is an illustrated, hoodie-wearing
@@ -383,6 +392,10 @@ once, do not reliably save to disk in this environment).
 | "06 Custom Products" square thumbnail | `/services` "Featured Work" card | ✅ `service-custom-products.webp` |
 | "07 Dedicated Designer" square thumbnail | `/services` "Featured Work" card | ✅ `service-dedicated-designer.webp` |
 | "08 Print Consultation" square thumbnail | `/services` "Featured Work" card | ✅ `service-print-consultation.webp` |
+| "Tell Us Your Need" step illustration | `/how-it-works` "6 Simple Steps" card 1 | ✅ `journey-tell-us-your-need.webp` |
+| "We Understand & Suggest" step illustration | `/how-it-works` "6 Simple Steps" card 2 | ✅ `journey-we-understand-suggest.webp` |
+| "Design & Prepare" step illustration | `/how-it-works` "6 Simple Steps" card 3 | ✅ `journey-design-prepare.webp` |
+| "Coordinate With Your Printer" step illustration | `/how-it-works` "6 Simple Steps" card 4 | ✅ `journey-coordinate-with-printer.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width
