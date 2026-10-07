@@ -326,11 +326,10 @@ is a plain product-name icon grid meant for the smaller listing card.
 
 The same square-thumbnail pattern is used on `/services` — a `Service`
 can set `imageSrc` (`src/data/services.ts`) and the "Featured Work" grid
-(first 6 services) renders it in place of the icon-only placeholder
-card. Only the first 4 services (Branding & Identity, Packaging,
-Merchandise, Print Solutions) have real images so far; Social Media
-Design and Custom Products still fall back to the icon card until their
-banners are supplied.
+renders it in place of the icon-only placeholder card. All 8 services
+now have real images, so the grid shows the full set
+(`lg:grid-cols-4`, two rows of 4) rather than the original 6-item
+`slice(0, 6)`.
 
 ### PO — the brand mascot
 
@@ -380,6 +379,10 @@ once, do not reliably save to disk in this environment).
 | "02 Packaging Solutions" square thumbnail | `/services` "Featured Work" card | ✅ `service-packaging-solutions.webp` |
 | "03 Merchandise Printing" square thumbnail | `/services` "Featured Work" card | ✅ `service-merchandise.webp` |
 | "04 Print Solutions" square thumbnail | `/services` "Featured Work" card | ✅ `service-print-solutions.webp` |
+| "05 Social Media Design" square thumbnail | `/services` "Featured Work" card | ✅ `service-social-media-design.webp` |
+| "06 Custom Products" square thumbnail | `/services` "Featured Work" card | ✅ `service-custom-products.webp` |
+| "07 Dedicated Designer" square thumbnail | `/services` "Featured Work" card | ✅ `service-dedicated-designer.webp` |
+| "08 Print Consultation" square thumbnail | `/services` "Featured Work" card | ✅ `service-print-consultation.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width

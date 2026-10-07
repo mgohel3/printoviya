@@ -159,8 +159,8 @@ export default function ServicesPage() {
             View Portfolio <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {services.slice(0, 6).map((service) =>
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {services.map((service) =>
             service.imageSrc ? (
               <div
                 key={service.slug}
@@ -170,7 +170,7 @@ export default function ServicesPage() {
                   src={service.imageSrc}
                   alt={service.title}
                   fill
-                  sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                   loading="eager"
                   className="object-cover"
                 />
