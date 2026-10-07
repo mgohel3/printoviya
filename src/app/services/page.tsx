@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Sparkles, ShieldCheck, Headphones, Globe2 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -159,15 +160,31 @@ export default function ServicesPage() {
           </Link>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {services.slice(0, 6).map((service) => (
-            <div
-              key={service.slug}
-              className="flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl bg-light-blue p-4 text-center"
-            >
-              <service.icon className="h-7 w-7 text-blue" aria-hidden="true" />
-              <p className="text-[11px] font-medium text-navy">{service.title.split(" ")[0]}</p>
-            </div>
-          ))}
+          {services.slice(0, 6).map((service) =>
+            service.imageSrc ? (
+              <div
+                key={service.slug}
+                className="relative aspect-square overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={service.imageSrc}
+                  alt={service.title}
+                  fill
+                  sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+                  loading="eager"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <div
+                key={service.slug}
+                className="flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl bg-light-blue p-4 text-center"
+              >
+                <service.icon className="h-7 w-7 text-blue" aria-hidden="true" />
+                <p className="text-[11px] font-medium text-navy">{service.title.split(" ")[0]}</p>
+              </div>
+            ),
+          )}
         </div>
       </section>
 

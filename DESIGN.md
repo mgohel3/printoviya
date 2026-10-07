@@ -320,9 +320,17 @@ block whenever `isCustom` or `bannerSrc` is present.
 
 A category can separately set `thumbnailSrc` — a square card image used
 on the `/products` listing grid in place of `PlaceholderPhoto` (same
-`aspect-[4/3]` card slot, `object-cover`). `bannerSrc` and `thumbnailSrc`
+`aspect-square` card slot, `object-cover`). `bannerSrc` and `thumbnailSrc`
 are independent: the hero banner has its own CTA baked in, the thumbnail
 is a plain product-name icon grid meant for the smaller listing card.
+
+The same square-thumbnail pattern is used on `/services` — a `Service`
+can set `imageSrc` (`src/data/services.ts`) and the "Featured Work" grid
+(first 6 services) renders it in place of the icon-only placeholder
+card. Only the first 4 services (Branding & Identity, Packaging,
+Merchandise, Print Solutions) have real images so far; Social Media
+Design and Custom Products still fall back to the icon card until their
+banners are supplied.
 
 ### PO — the brand mascot
 
@@ -368,6 +376,10 @@ once, do not reliably save to disk in this environment).
 | "06 Events & Brand Displays" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-events-brand-displays.webp` |
 | "07 Apparel & Branded Merchandise" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-apparel-branded-merchandise.webp` |
 | "08 Custom Products" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-custom-products.webp` |
+| "01 Branding & Identity Design" square thumbnail | `/services` "Featured Work" card | ✅ `service-branding-identity.webp` |
+| "02 Packaging Solutions" square thumbnail | `/services` "Featured Work" card | ✅ `service-packaging-solutions.webp` |
+| "03 Merchandise Printing" square thumbnail | `/services` "Featured Work" card | ✅ `service-merchandise.webp` |
+| "04 Print Solutions" square thumbnail | `/services` "Featured Work" card | ✅ `service-print-solutions.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width
