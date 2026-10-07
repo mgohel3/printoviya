@@ -54,7 +54,7 @@ export default function ProductsPage() {
               className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
             >
               {category.thumbnailSrc ? (
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
                     src={category.thumbnailSrc}
                     alt={category.title}
