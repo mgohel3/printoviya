@@ -406,6 +406,7 @@ once, do not reliably save to disk in this environment).
 | "Get Your Final Product" step illustration | `/how-it-works` "6 Simple Steps" card 6 | ✅ `journey-final-product.webp` |
 | PO pointing at idea→design→printer→products journey strip | `/about#why-printoviya` banner (left) | ✅ `about-why-printoviya-journey.webp` |
 | PO thinking/planning at desk | `/about#why-printoviya` banner (right) | ✅ `about-why-printoviya-planning.webp` |
+| PO with icon-ring (print/design/review/people) behind laptop + products | `/services` hero background (breadcrumb banner, same pattern as Contact) | ✅ `services-breadcrumb-hero.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width

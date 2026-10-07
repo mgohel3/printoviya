@@ -26,8 +26,20 @@ const WHY_CHOOSE = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="bg-off-white py-20">
-        <div className="container-px mx-auto max-w-[1440px]">
+      <section className="relative overflow-hidden bg-off-white">
+        <Image
+          src="/banners/services-breadcrumb-hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-off-white via-off-white/90 to-off-white/10"
+          aria-hidden="true"
+        />
+        <div className="container-px relative mx-auto max-w-[1440px] py-20">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "What We Do" }]} light={false} />
           <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
             Our Services
