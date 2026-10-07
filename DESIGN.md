@@ -338,6 +338,14 @@ not by the compact `OJourney` icon strip reused across Home, Print
 Concierge and Start a Project, which always shows the icon regardless.
 All 6 steps now have real images, completing the card grid.
 
+The `/services` "Featured Work" cards are each a `Link` to
+`#${service.slug}` — the matching card's `id` in the "Our Service
+Categories" grid above, so clicking a Featured Work image jumps to that
+service's detail card on the same page. Hover state: the image scales
+(`group-hover:scale-105`) and a bottom-anchored navy gradient overlay
+fades in with the service title and an arrow, matching the hover
+pattern used on the `/products` category cards.
+
 ### PO — the brand mascot
 
 The client's actual PO character is an illustrated, hoodie-wearing

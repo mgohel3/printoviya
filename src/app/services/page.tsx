@@ -160,31 +160,34 @@ export default function ServicesPage() {
           </Link>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {services.map((service) =>
-            service.imageSrc ? (
-              <div
-                key={service.slug}
-                className="relative aspect-square overflow-hidden rounded-2xl"
-              >
+          {services.map((service) => (
+            <Link
+              key={service.slug}
+              href={`#${service.slug}`}
+              className="group relative block aspect-square overflow-hidden rounded-2xl"
+            >
+              {service.imageSrc ? (
                 <Image
                   src={service.imageSrc}
                   alt={service.title}
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                   loading="eager"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-light-blue p-4 text-center">
+                  <service.icon className="h-7 w-7 text-blue" aria-hidden="true" />
+                  <p className="text-[11px] font-medium text-navy">{service.title.split(" ")[0]}</p>
+                </div>
+              )}
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-navy/0 to-navy/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="flex items-center gap-1.5 p-4 text-xs font-semibold text-white">
+                  {service.title} <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
-            ) : (
-              <div
-                key={service.slug}
-                className="flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl bg-light-blue p-4 text-center"
-              >
-                <service.icon className="h-7 w-7 text-blue" aria-hidden="true" />
-                <p className="text-[11px] font-medium text-navy">{service.title.split(" ")[0]}</p>
-              </div>
-            ),
-          )}
+            </Link>
+          ))}
         </div>
       </section>
 
