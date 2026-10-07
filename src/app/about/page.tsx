@@ -60,8 +60,20 @@ const TRUST_GRID = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-off-white py-20">
-        <div className="container-px mx-auto max-w-[1440px]">
+      <section className="relative overflow-hidden bg-off-white">
+        <Image
+          src="/banners/about-why-printoviya-planning.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-off-white via-off-white/90 to-off-white/10"
+          aria-hidden="true"
+        />
+        <div className="container-px relative mx-auto max-w-[1440px] py-20">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "About" }]} light={false} />
           <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
             About Printoviya
@@ -194,27 +206,15 @@ export default function AboutPage() {
           title="A Partner You Can"
           highlight="Rely On."
         />
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div className="relative aspect-[3/1] w-full overflow-hidden rounded-3xl">
-            <Image
-              src="/banners/about-why-printoviya-journey.webp"
-              alt="From idea to final product — Printoviya guides you at every step."
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              loading="eager"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-[3/1] w-full overflow-hidden rounded-3xl">
-            <Image
-              src="/banners/about-why-printoviya-planning.webp"
-              alt="Thoughtful planning and design support behind every Printoviya project."
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              loading="eager"
-              className="object-cover"
-            />
-          </div>
+        <div className="relative mt-10 aspect-[3/1] w-full overflow-hidden rounded-3xl">
+          <Image
+            src="/banners/about-why-printoviya-journey.webp"
+            alt="From idea to final product — Printoviya guides you at every step."
+            fill
+            sizes="100vw"
+            loading="eager"
+            className="object-cover"
+          />
         </div>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TRUST_GRID.map((item) => (

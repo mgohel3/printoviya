@@ -404,8 +404,8 @@ once, do not reliably save to disk in this environment).
 | "Coordinate With Your Printer" step illustration | `/how-it-works` "6 Simple Steps" card 4 | ✅ `journey-coordinate-with-printer.webp` |
 | "Print & Produce" step illustration | `/how-it-works` "6 Simple Steps" card 5 | ✅ `journey-print-produce.webp` |
 | "Get Your Final Product" step illustration | `/how-it-works` "6 Simple Steps" card 6 | ✅ `journey-final-product.webp` |
-| PO pointing at idea→design→printer→products journey strip | `/about#why-printoviya` banner (left) | ✅ `about-why-printoviya-journey.webp` |
-| PO thinking/planning at desk | `/about#why-printoviya` banner (right) | ✅ `about-why-printoviya-planning.webp` |
+| PO pointing at idea→design→printer→products journey strip | `/about#why-printoviya` banner (full-width) | ✅ `about-why-printoviya-journey.webp` |
+| PO thinking/planning at desk | `/about` hero background (breadcrumb banner, same pattern as Contact/Services) | ✅ `about-why-printoviya-planning.webp` (reused — same file originally sent for the why-printoviya section, moved to the hero once it became the page's breadcrumb banner) |
 | PO with icon-ring (print/design/review/people) behind laptop + products | `/services` hero background (breadcrumb banner, same pattern as Contact) | ✅ `services-breadcrumb-hero.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
