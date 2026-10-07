@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Box,
@@ -80,42 +79,35 @@ export default function HowItWorksPage() {
   return (
     <>
       <section className="bg-off-white py-20">
-        <div className="container-px mx-auto max-w-[1440px]">
-          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} light={false} />
-          <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
-            How It Works
-          </p>
-          <h1 className="mt-3 max-w-2xl font-heading text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
-            A Simple Process. <span className="text-blue">From Your Idea to Final Print.</span>
-          </h1>
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-slate">
-            Whether you have a clear idea or just a rough requirement — we make the entire
-            printing journey simple, guided and stress-free.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <PrimaryButton href="/start-a-project">Start Your Project</PrimaryButton>
-            <SecondaryButton href="/portfolio" icon>
-              See Example Project
-            </SecondaryButton>
+        <div className="container-px mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} light={false} />
+            <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+              How It Works
+            </p>
+            <h1 className="mt-3 font-heading text-4xl font-extrabold leading-tight text-navy sm:text-5xl">
+              A Simple Process. <span className="text-blue">From Your Idea to Final Print.</span>
+            </h1>
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-slate">
+              Whether you have a clear idea or just a rough requirement — we make the entire
+              printing journey simple, guided and stress-free.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <PrimaryButton href="/start-a-project">Start Your Project</PrimaryButton>
+              <SecondaryButton href="/portfolio" icon>
+                See Example Project
+              </SecondaryButton>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+              {TRUST_CHIPS.map((item) => (
+                <div key={item.label} className="flex items-center gap-2">
+                  <item.icon className="h-4 w-4 text-blue" aria-hidden="true" />
+                  <span className="text-xs font-medium text-navy">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-            {TRUST_CHIPS.map((item) => (
-              <div key={item.label} className="flex items-center gap-2">
-                <item.icon className="h-4 w-4 text-blue" aria-hidden="true" />
-                <span className="text-xs font-medium text-navy">{item.label}</span>
-              </div>
-            ))}
-          </div>
-          <div className="relative mt-12 aspect-[8/3] w-full overflow-hidden rounded-3xl">
-            <Image
-              src="/banners/home-how-it-works-flow.webp"
-              alt="You Share Your Idea → We Design & Prepare → We Handle Printer Requirements → Your Products Get Printed → Delivered to You"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
+          <PlaceholderPhoto label="You Tell Us. We Handle the Rest." className="aspect-[4/3] w-full rounded-3xl" />
         </div>
       </section>
 
@@ -141,20 +133,7 @@ export default function HowItWorksPage() {
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {journeySteps.map((step, i) => (
             <div key={step.number} className="overflow-hidden rounded-2xl border border-border bg-off-white">
-              {step.imageSrc ? (
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src={step.imageSrc}
-                    alt={step.title}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    loading="eager"
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <PlaceholderPhoto icon={step.icon} className="aspect-[16/10] w-full" />
-              )}
+              <PlaceholderPhoto icon={step.icon} className="aspect-[16/10] w-full" />
               <div className="p-5">
                 <div className="flex items-center gap-2">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue text-[10px] font-bold text-white">

@@ -5,8 +5,6 @@ export type JourneyStep = {
   title: string;
   description: string;
   icon: LucideIcon;
-  /** Square PO illustration for the larger step cards (e.g. How It Works) — the compact icon strip ignores this. */
-  imageSrc?: string;
 };
 
 type Props = {

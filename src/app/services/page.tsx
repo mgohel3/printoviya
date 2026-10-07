@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Sparkles, ShieldCheck, Headphones, Globe2 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -26,20 +25,8 @@ const WHY_CHOOSE = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-off-white">
-        <Image
-          src="/banners/services-breadcrumb-hero.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-off-white via-off-white/90 to-off-white/10"
-          aria-hidden="true"
-        />
-        <div className="container-px relative mx-auto max-w-[1440px] py-20">
+      <section className="bg-off-white py-20">
+        <div className="container-px mx-auto max-w-[1440px]">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "What We Do" }]} light={false} />
           <p className="mt-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-blue">
             Our Services
@@ -171,34 +158,15 @@ export default function ServicesPage() {
             View Portfolio <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {services.map((service) => (
-            <Link
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {services.slice(0, 6).map((service) => (
+            <div
               key={service.slug}
-              href={`#${service.slug}`}
-              className="group relative block aspect-square overflow-hidden rounded-2xl"
+              className="flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl bg-light-blue p-4 text-center"
             >
-              {service.imageSrc ? (
-                <Image
-                  src={service.imageSrc}
-                  alt={service.title}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-                  loading="eager"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-light-blue p-4 text-center">
-                  <service.icon className="h-7 w-7 text-blue" aria-hidden="true" />
-                  <p className="text-[11px] font-medium text-navy">{service.title.split(" ")[0]}</p>
-                </div>
-              )}
-              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-navy/0 to-navy/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="flex items-center gap-1.5 p-4 text-xs font-semibold text-white">
-                  {service.title} <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </div>
-            </Link>
+              <service.icon className="h-7 w-7 text-blue" aria-hidden="true" />
+              <p className="text-[11px] font-medium text-navy">{service.title.split(" ")[0]}</p>
+            </div>
           ))}
         </div>
       </section>

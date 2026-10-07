@@ -18,8 +18,6 @@ export type Service = {
   full_description: string;
   features: string[];
   cta: { label: string; href: string };
-  /** Square PO banner image — shown on the Services "Featured Work" card in place of the icon. */
-  imageSrc?: string;
 };
 
 export const services: Service[] = [
@@ -32,7 +30,6 @@ export const services: Service[] = [
       "From logo design to a full brand identity system, we design brand assets that hold up in print and on screen — and we prepare every file to be production-ready.",
     features: ["Logos", "Brand identity", "Stationery", "Brand guidelines"],
     cta: { label: "Start Your Brand", href: "/start-a-project" },
-    imageSrc: "/banners/service-branding-identity.webp",
   },
   {
     title: "Packaging Solutions",
@@ -43,7 +40,6 @@ export const services: Service[] = [
       "We design and prepare packaging artwork — boxes, labels, sleeves and inserts — and coordinate with your printer or ours to get it produced correctly the first time.",
     features: ["Boxes", "Labels", "Sleeves", "Inserts", "Packaging artwork"],
     cta: { label: "Talk Packaging", href: "/start-a-project" },
-    imageSrc: "/banners/service-packaging-solutions.webp",
   },
   {
     title: "Merchandise Printing",
@@ -54,7 +50,6 @@ export const services: Service[] = [
       "Merchandise that represents your brand well. We help you choose the right product, prepare artwork for the printing method, and coordinate production.",
     features: ["T-shirts", "Mugs", "Tote bags", "Promotional products"],
     cta: { label: "Start a Merch Project", href: "/start-a-project" },
-    imageSrc: "/banners/service-merchandise.webp",
   },
   {
     title: "Print Solutions",
@@ -65,7 +60,6 @@ export const services: Service[] = [
       "Everyday and large-format print, handled end to end — from file prep and material selection to production and delivery, with us or your own printer.",
     features: ["Business cards", "Brochures", "Flyers", "Catalogues", "Posters", "Signage"],
     cta: { label: "Get a Print Quote", href: "/start-a-project" },
-    imageSrc: "/banners/service-print-solutions.webp",
   },
   {
     title: "Social Media Design",
@@ -76,7 +70,6 @@ export const services: Service[] = [
       "Consistent, on-brand social content designed for the platforms you use — from single posts to full campaign creative sets.",
     features: ["Posts", "Ads", "Campaign creatives", "Promotional graphics"],
     cta: { label: "Request Social Designs", href: "/start-a-project" },
-    imageSrc: "/banners/service-social-media-design.webp",
   },
   {
     title: "Custom Products",
@@ -87,7 +80,6 @@ export const services: Service[] = [
       "Have something specific in mind? We help you specify, source and produce custom gifts, corporate merchandise and product-specific print runs.",
     features: ["Gifts", "Corporate merchandise", "Custom stationery", "Product-specific printing"],
     cta: { label: "Discuss a Custom Product", href: "/start-a-project" },
-    imageSrc: "/banners/service-custom-products.webp",
   },
   {
     title: "Dedicated Designer",
@@ -98,7 +90,6 @@ export const services: Service[] = [
       "For US, UK and Canada clients who need ongoing design support, we provide a dedicated designer — managed by Printoviya — who works directly with your team.",
     features: ["Managed by Printoviya", "Works with your team", "Ongoing design support"],
     cta: { label: "Request a Designer", href: "/start-a-project" },
-    imageSrc: "/banners/service-dedicated-designer.webp",
   },
   {
     title: "Print Consultation",
@@ -115,7 +106,6 @@ export const services: Service[] = [
       "Production troubleshooting",
     ],
     cta: { label: "Talk to Print Concierge", href: "/print-concierge" },
-    imageSrc: "/banners/service-print-consultation.webp",
   },
 ];
 

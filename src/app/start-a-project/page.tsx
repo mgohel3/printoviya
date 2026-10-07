@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -78,20 +77,8 @@ const MINI_FAQ = [
 export default function StartAProjectPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-off-white">
-        <Image
-          src="/banners/contact-po-on-phone.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-off-white via-off-white/90 to-off-white/10"
-          aria-hidden="true"
-        />
-        <div className="container-px relative mx-auto max-w-[1440px] py-20">
+      <section className="bg-off-white py-20">
+        <div className="container-px mx-auto max-w-[1440px]">
           <Breadcrumb
             items={[{ label: "Home", href: "/" }, { label: "Start a Project" }]}
             light={false}
