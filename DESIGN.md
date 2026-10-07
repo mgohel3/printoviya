@@ -404,6 +404,8 @@ once, do not reliably save to disk in this environment).
 | "Coordinate With Your Printer" step illustration | `/how-it-works` "6 Simple Steps" card 4 | ✅ `journey-coordinate-with-printer.webp` |
 | "Print & Produce" step illustration | `/how-it-works` "6 Simple Steps" card 5 | ✅ `journey-print-produce.webp` |
 | "Get Your Final Product" step illustration | `/how-it-works` "6 Simple Steps" card 6 | ✅ `journey-final-product.webp` |
+| PO pointing at idea→design→printer→products journey strip | `/about#why-printoviya` banner (left) | ✅ `about-why-printoviya-journey.webp` |
+| PO thinking/planning at desk | `/about#why-printoviya` banner (right) | ✅ `about-why-printoviya-planning.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width

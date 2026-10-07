@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Compass,
   Eye,
@@ -193,6 +194,28 @@ export default function AboutPage() {
           title="A Partner You Can"
           highlight="Rely On."
         />
+        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="relative aspect-[3/1] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/about-why-printoviya-journey.webp"
+              alt="From idea to final product — Printoviya guides you at every step."
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="eager"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative aspect-[3/1] w-full overflow-hidden rounded-3xl">
+            <Image
+              src="/banners/about-why-printoviya-planning.webp"
+              alt="Thoughtful planning and design support behind every Printoviya project."
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="eager"
+              className="object-cover"
+            />
+          </div>
+        </div>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TRUST_GRID.map((item) => (
             <div key={item.title} className="rounded-2xl border border-border bg-off-white p-6">
