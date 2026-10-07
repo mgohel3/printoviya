@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -52,7 +53,20 @@ export default function ProductsPage() {
               href={`/products/${category.slug}`}
               className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
             >
-              <PlaceholderPhoto icon={category.icon} className="aspect-[4/3] w-full" />
+              {category.thumbnailSrc ? (
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src={category.thumbnailSrc}
+                    alt={category.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    loading="eager"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              ) : (
+                <PlaceholderPhoto icon={category.icon} className="aspect-[4/3] w-full" />
+              )}
               <div className="p-5">
                 <p className="text-xs font-semibold uppercase tracking-wide text-blue">
                   {String(i + 1).padStart(2, "0")}

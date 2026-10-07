@@ -26,6 +26,8 @@ export type CatalogCategory = {
   isCustom?: boolean;
   /** Full-width hero banner with baked-in heading/CTA — replaces the plain text hero when set. */
   bannerSrc?: string;
+  /** Square product-grid thumbnail — shown on /products' category cards in place of the placeholder. */
+  thumbnailSrc?: string;
   products: CatalogProduct[];
 };
 
@@ -37,6 +39,7 @@ export const catalogCategories: CatalogCategory[] = [
     title: "Business Essentials",
     slug: "business-essentials",
     bannerSrc: "/banners/category-business-essentials.webp",
+    thumbnailSrc: "/banners/thumb-business-essentials.webp",
     icon: CreditCard,
     tagline: "Everyday printed essentials for your business.",
     description:
@@ -141,6 +144,7 @@ export const catalogCategories: CatalogCategory[] = [
     title: "Packaging & Product Branding",
     slug: "packaging-product-branding",
     bannerSrc: "/banners/category-packaging-product-branding.webp",
+    thumbnailSrc: "/banners/thumb-packaging-product-branding.webp",
     icon: Package,
     tagline: "Custom packaging, labels and tags that make your product stand out.",
     description:
@@ -286,6 +290,7 @@ export const catalogCategories: CatalogCategory[] = [
     title: "Marketing & Promotional Print",
     slug: "marketing-promotional-print",
     bannerSrc: "/banners/category-marketing-promotional-print.webp",
+    thumbnailSrc: "/banners/thumb-marketing-promotional-print.webp",
     icon: BookOpen,
     tagline: "Brochures, flyers and collateral that get your message out.",
     description:
@@ -413,6 +418,7 @@ export const catalogCategories: CatalogCategory[] = [
     title: "Banners & Large Displays",
     slug: "banners-large-displays",
     bannerSrc: "/banners/category-banners-large-displays.webp",
+    thumbnailSrc: "/banners/thumb-banners-large-displays.webp",
     icon: GalleryHorizontal,
     tagline: "Large-format printed graphics that get noticed.",
     description:
@@ -532,6 +538,7 @@ export const catalogCategories: CatalogCategory[] = [
     title: "Branding, Graphics & Signage",
     slug: "branding-graphics-signage",
     bannerSrc: "/banners/category-branding-graphics-signage.webp",
+    thumbnailSrc: "/banners/thumb-branding-graphics-signage.webp",
     icon: Signpost,
     tagline: "Wall, window, vehicle and sign graphics for your space.",
     description:

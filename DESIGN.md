@@ -318,6 +318,12 @@ icon row and "View Products" CTA baked in sets `bannerSrc` on its
 (`aspect-[2.4/1]`, rounded-3xl) in place of the breadcrumb+h1+description
 block whenever `isCustom` or `bannerSrc` is present.
 
+A category can separately set `thumbnailSrc` — a square card image used
+on the `/products` listing grid in place of `PlaceholderPhoto` (same
+`aspect-[4/3]` card slot, `object-cover`). `bannerSrc` and `thumbnailSrc`
+are independent: the hero banner has its own CTA baked in, the thumbnail
+is a plain product-name icon grid meant for the smaller listing card.
+
 ### PO — the brand mascot
 
 The client's actual PO character is an illustrated, hoodie-wearing
@@ -354,6 +360,11 @@ once, do not reliably save to disk in this environment).
 | "03 Marketing & Promotional Print" — PO with flyers/brochures/promo items | `/products/marketing-promotional-print` hero | ✅ `category-marketing-promotional-print.webp` |
 | "04 Banners & Large Displays" — PO with roll-up/large-format banners | `/products/banners-large-displays` hero | ✅ `category-banners-large-displays.webp` |
 | "05 Branding, Graphics & Signage" — PO outside branded storefront/signage | `/products/branding-graphics-signage` hero | ✅ `category-branding-graphics-signage.webp` |
+| "01 Business Essentials" square thumbnail (product-name icon grid) | `/products` listing — category card thumbnail | ✅ `thumb-business-essentials.webp` |
+| "02 Packaging & Product Branding" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-packaging-product-branding.webp` |
+| "03 Marketing & Promotional Print" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-marketing-promotional-print.webp` |
+| "04 Banners & Large Displays" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-banners-large-displays.webp` |
+| "05 Branding, Graphics & Signage" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-branding-graphics-signage.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width
