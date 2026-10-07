@@ -365,6 +365,9 @@ once, do not reliably save to disk in this environment).
 | "03 Marketing & Promotional Print" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-marketing-promotional-print.webp` |
 | "04 Banners & Large Displays" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-banners-large-displays.webp` |
 | "05 Branding, Graphics & Signage" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-branding-graphics-signage.webp` |
+| "06 Events & Brand Displays" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-events-brand-displays.webp` |
+| "07 Apparel & Branded Merchandise" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-apparel-branded-merchandise.webp` |
+| "08 Custom Products" square thumbnail | `/products` listing — category card thumbnail | ✅ `thumb-custom-products.webp` |
 
 All `next/image` banners on the Home page use `loading="eager"` — Next's
 default lazy-loading occasionally left a blank gap on these full-width

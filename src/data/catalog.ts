@@ -667,6 +667,7 @@ export const catalogCategories: CatalogCategory[] = [
   {
     title: "Events & Brand Displays",
     slug: "events-brand-displays",
+    thumbnailSrc: "/banners/thumb-events-brand-displays.webp",
     icon: Tent,
     tagline: "Show up. Stand out. Get noticed.",
     description:
@@ -811,6 +812,7 @@ export const catalogCategories: CatalogCategory[] = [
   {
     title: "Apparel & Branded Merchandise",
     slug: "apparel-branded-merchandise",
+    thumbnailSrc: "/banners/thumb-apparel-branded-merchandise.webp",
     icon: Shirt,
     tagline: "Branded apparel and promotional merchandise.",
     description:
@@ -946,6 +948,7 @@ export const catalogCategories: CatalogCategory[] = [
   {
     title: "Custom Products",
     slug: "custom-products",
+    thumbnailSrc: "/banners/thumb-custom-products.webp",
     icon: Sparkles,
     tagline: "Have something specific in mind?",
     description:
